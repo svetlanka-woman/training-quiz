@@ -1,0 +1,29 @@
+.header {
+  height: 143px;
+  background-image: url(../img/header-img.svg);
+  background-repeat: no-repeat;
+}
+
+.header__logo {
+  margin: 18px 0px 0 12px;
+}
+
+.header__title {
+  font-family: $fontExtraBold800;
+  color: $colorWhite;
+  font-size: 17px;
+  line-height: 21px;
+  margin: 16px 0 8px 19px;
+  span {
+    text-transform: uppercase;
+  }
+  &::after {
+    content: "";
+    width: 144px;
+    height: 3px;
+    background-color: $colorWhite;
+    display: block;
+    margin-top: 8px;
+    margin-left: 41px;
+  }
+}

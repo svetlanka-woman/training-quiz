@@ -1,0 +1,36 @@
+.question__header {
+  background-color: $bgGrey;
+  height: 60px;
+  display: flex;
+  align-items: center;
+}
+
+.number {
+  color: $colorRed;
+  font-family: $fontBold700;
+  font-size: 16px;
+  margin-right: 8px;
+  margin-left: 14px;
+  letter-spacing: -2px;
+}
+
+.number__total {
+  font-size: 10px;
+}
+
+.indicator {
+  display: flex;
+  width: 83%;
+  
+  li {
+    flex: 1 1 auto;
+    width: 50px;
+    height: 2px;
+    background-color: #C4C4C4;
+    margin-left: 3px;
+    
+    &.indicator_black {
+      background-color: #000;
+    }
+  }
+}

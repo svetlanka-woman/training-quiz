@@ -10,21 +10,23 @@
   <body>
     <div class="container">
       <div class="header">
-        <img class="logo__header" src="img/logo.svg" alt="Logotype" />
-        <h1 class="title__header">
+        <img class="header__logo" src="img/logo.svg" alt="Logotype" />
+        <h1 class="header__title">
           <span>Пакет услуг</span><br />“Премиальный”
         </h1>
       </div>
+      <!--.header-->
+
       <div class="main">
         <div class="question">
           <div class="question__header">
             <div class="number">
               <span class="number__current">1</span>
               /
-              <span id="number__total">6</span>
+              <span class="number__total">6</span>
             </div>
-            <ul class="number__indicator">
-              <li></li>
+            <ul class="indicator">
+              <li class="indicator_black"></li>
               <li></li>
               <li></li>
               <li></li>
@@ -32,8 +34,17 @@
               <li></li>
             </ul>
           </div>
+
+          <div class="question__body">
+            <p class="question__text">
+              Насколько Вы довольны пакетом услуг “Премиальный” Росбанка в
+              целом?
+            </p>
+            <div class="question__answer"></div>
+          </div>
         </div>
       </div>
+      <!--.main-->
     </div>
   </body>
 </html>

@@ -34,6 +34,14 @@ ol[class] {
   font-style: normal;
   font-display: swap;
 }
+@font-face {
+  font-family: 'Montserrat-Bold';
+  src: url("../fonts/Montserrat-Bold.eot");
+  src: local("Montserrat Bold"), local("Montserrat-Bold"), url("../fonts/Montserrat-Bold.eot?#iefix") format("embedded-opentype"), url("../fonts/Montserrat-Bold.woff2") format("woff2"), url("../fonts/Montserrat-Bold.woff") format("woff"), url("../fonts/Montserrat-Bold.ttf") format("truetype"), url("../fonts/Montserrat-Bold.svg#Montserrat-Bold") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 .body {
   background-color: #fff;
 }
@@ -43,27 +51,31 @@ ol[class] {
   margin: 0 auto;
 }
 
+.main {
+  background-color: #fff;
+}
+
 .header {
   height: 143px;
   background-image: url(../img/header-img.svg);
   background-repeat: no-repeat;
 }
 
-.logo__header {
+.header__logo {
   margin: 18px 0px 0 12px;
 }
 
-.title__header {
+.header__title {
   font-family: "Montserrat-ExtraBold", serif;
   color: #fff;
   font-size: 17px;
   line-height: 21px;
   margin: 16px 0 8px 19px;
 }
-.title__header span {
+.header__title span {
   text-transform: uppercase;
 }
-.title__header::after {
+.header__title::after {
   content: "";
   width: 144px;
   height: 3px;
@@ -71,6 +83,55 @@ ol[class] {
   display: block;
   margin-top: 8px;
   margin-left: 41px;
+}
+
+.question__header {
+  background-color: #F0F0F0;
+  height: 60px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.number {
+  color: #E9041E;
+  font-family: "Montserrat-Bold", serif;
+  font-size: 16px;
+  margin-right: 8px;
+  margin-left: 14px;
+  letter-spacing: -2px;
+}
+
+.number__total {
+  font-size: 10px;
+}
+
+.indicator {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 83%;
+}
+.indicator li {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  width: 50px;
+  height: 2px;
+  background-color: #C4C4C4;
+  margin-left: 3px;
+}
+.indicator li.indicator_black {
+  background-color: #000;
+}
+
+.question__text {
+  font-size: 16px;
+  font-family: "Montserrat-Medium", serif;
+  color: #171717;
 }
 
 /*# sourceMappingURL=style.css.map */
