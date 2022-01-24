@@ -132,6 +132,52 @@ ol[class] {
   font-size: 16px;
   font-family: "Montserrat-Medium", serif;
   color: #171717;
+  padding: 20px;
+  padding-right: 29px;
+  line-height: 19.5px;
+}
+
+.question__answer {
+  padding: 20px;
+}
+
+.wrap_grade {
+  width: 100%;
+}
+
+.grade {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 3px;
+  background: #a3a3a3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  -webkit-transition: opacity .2s;
+  transition: opacity .2s;
+}
+.grade:hover {
+  opacity: 1;
+}
+.grade::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 26px;
+  height: 33px;
+  border: 0;
+  background: url("../img/grade_thumb.svg");
+  cursor: pointer;
+}
+.grade::-moz-range-thumb {
+  width: 26px;
+  height: 33px;
+  border: 0;
+  background: url("../img/grade_thumb.svg");
+  cursor: pointer;
+}
+
+.answer-decryption {
+  background-color: #F0F0F0;
 }
 
 /*# sourceMappingURL=style.css.map */
