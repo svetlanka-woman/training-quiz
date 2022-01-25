@@ -1,3 +1,41 @@
 .answer-decryption {
   background-color: $bgGrey;
+  padding: 20px 0px 2px 18px;
 }
+
+.answer-decryption__question {
+font-family: $fontMedium500;
+font-size: 14px;
+justify-content: space-between;
+
+}
+
+.answer-decryption__list {
+  margin-top: 22px;
+  display: flex;
+  flex-wrap: wrap;
+  & li {
+    flex: 0 1 29%;
+    background-color: #fff;
+    margin-right: 15px;
+    margin-bottom: 15px;
+    text-align: center;
+    padding: 10px 5px 5px;
+  }
+  & p {
+    font-family: $fontRegular400;
+    font-size: 10px;
+    line-height: 14px;
+  }
+}
+
+
+
+// svg path {
+//   fill:inherit;
+//   stroke:inherit;
+//   stroke-width:inherit;
+//   }
+//   .answer-decryption__list svg:hover {
+//   fill:red;
+//   }

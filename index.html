@@ -41,8 +41,24 @@
               пакета услуг “Премиальный”?
             </p>
             <div class="question__answer">
+              <div class="wrap_ex"><div class="ex"></div></div>
               <div class="wrap_grade">
-                <input class="grade" type="range" min="1" max="10" value="5" />
+                <input
+                  class="grade"
+                  type="range"
+                  min="1"
+                  max="10"
+                  value="5"
+                  list="rangeList"
+                  onchange="document.getElementById('rangeValue').innerHTML = this.value;"
+                />
+                <datalist id="rangeList">
+                  <option value="0" label="0"></option>
+                  <option value="5" label="5"></option>
+                  <option value="10" label="10"></option>
+                </datalist>
+
+                <span id="rangeValue">5</span>
               </div>
             </div>
             <div class="answer-decryption disappointed">
