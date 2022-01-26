@@ -140,34 +140,32 @@ ol[class] {
   padding: 20px;
 }
 
-.wrap_grade {
+.wrap_range {
   width: 100%;
+  padding: 0px 17px;
+  margin-top: -10px;
+  position: relative;
 }
 
-.grade {
+.range {
   -webkit-appearance: none;
   width: 100%;
   height: 3px;
-  background: #a3a3a3;
+  background: transparent;
   outline: none;
-  opacity: 0.7;
-  -webkit-transition: .2s;
-  -webkit-transition: opacity .2s;
-  transition: opacity .2s;
-}
-.grade:hover {
   opacity: 1;
 }
-.grade::-webkit-slider-thumb {
+.range::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
   width: 26px;
   height: 33px;
   border: 0;
+  opacity: 1;
   background: url("../img/grade_thumb.svg");
   cursor: pointer;
 }
-.grade::-moz-range-thumb {
+.range::-moz-range-thumb {
   width: 26px;
   height: 33px;
   border: 0;
@@ -175,17 +173,27 @@ ol[class] {
   cursor: pointer;
 }
 
-.wrap_ex {
-  outline: 1px solid #000;
+.range_value {
+  position: absolute;
+  top: -40px;
+  left: 24px;
+  font-family: "Montserrat-Medium", serif;
+  font-size: 16px;
 }
 
-.ex {
+.wrap_ex {
+  background-image: url("../img/scale.svg");
+  background-repeat: no-repeat;
+  background-position: 0 0;
+}
+
+.slider_range {
   width: 100%;
-  height: 100px;
+  height: 25px;
   background: -webkit-gradient(linear, left top, right top, color-stop(0.59%, #ba1417), color-stop(9.86%, #cd0800), color-stop(19.12%, #f45800), color-stop(27.87%, #fd9113), color-stop(38.16%, #ffb800), color-stop(48.45%, #d7e317), color-stop(60.8%, #d1e01f), color-stop(71.61%, #eaf65e), color-stop(81.9%, #00d086), color-stop(90.65%, #00ab23), color-stop(99.4%, #056719));
   background: linear-gradient(to right, #ba1417 0.59%, #cd0800 9.86%, #f45800 19.12%, #fd9113 27.87%, #ffb800 38.16%, #d7e317 48.45%, #d1e01f 60.8%, #eaf65e 71.61%, #00d086 81.9%, #00ab23 90.65%, #056719 99.4%);
-  -webkit-mask: url("../img/thumb-line.svg") 0% 0/54px 40px, linear-gradient(to right, #fff calc(50% - 54px/2 + 7px), transparent 0 calc(50% + 54px/2 - 2px), #fff 0) right 0% top 28px/calc(200% - 54px) 4px;
-          mask: url("../img/thumb-line.svg") 0% 0/54px 40px, linear-gradient(to right, #fff calc(50% - 54px/2 + 7px), transparent 0 calc(50% + 54px/2 - 2px), #fff 0) right 0% top 28px/calc(200% - 54px) 4px;
+  -webkit-mask: url("../img/thumb-line-1.svg") 0% 0/60px 24px, linear-gradient(to right, #fff calc(50% - 60px/2 + 1px), transparent 0 calc(50% + 60px/2 - 1px), #fff 0) right 0% top 20px/calc(200% - 60px) 4px;
+          mask: url("../img/thumb-line-1.svg") 0% 0/60px 24px, linear-gradient(to right, #fff calc(50% - 60px/2 + 1px), transparent 0 calc(50% + 60px/2 - 1px), #fff 0) right 0% top 20px/calc(200% - 60px) 4px;
   -webkit-mask-repeat: no-repeat;
           mask-repeat: no-repeat;
 }

@@ -3,7 +3,6 @@
   font-family: $fontMedium500;
   color: $colorFontBig;
   padding: 20px 29px 20px 18px;
-  // padding-right: 29px;
   line-height: 19.5px;
 }
 
@@ -11,23 +10,30 @@
   padding: 20px;
 }
 
-.wrap_grade {
+.wrap_range {
   width: 100%;
+  padding: 0px 17px;
+  margin-top: -10px;
+  position: relative;
+  
+  // background: linear-gradient(to right, #ba1417 0.59%, #cd0800 9.86%, #f45800 19.12%, #fd9113 27.87%, #ffb800 38.16%, #d7e317 48.45%, #d1e01f 60.8%, #eaf65e 71.61%, #00d086 81.9%, #00ab23 90.65%, #056719 99.4%);
+  // mask: url('../img/thumb-line-1.svg') 0% 0/60px 40px, linear-gradient(to right, #fff calc(50% - 60px/2), transparent 0 calc(50% + 60px/2 - 2px), #fff 0) right 0% top 20px/calc(200% - 60px) 4px;
+  // mask-repeat: no-repeat;
 }
 
-.grade {
+.range {
   -webkit-appearance: none;
   width: 100%;
   height: 3px;
-  background: #a3a3a3;
+  background: transparent;
   outline: none;
-  opacity: 0.7;
-  -webkit-transition: .2s;
-  transition: opacity .2s;
+  opacity: 1;
+  // -webkit-transition: .2s;
+  // transition: opacity .2s;
 
-  &:hover {
-    opacity: 1;
-  }
+  // &:hover {
+  //   opacity: 1;
+  // }
 
   &::-webkit-slider-thumb {
     -webkit-appearance: none;
@@ -35,6 +41,7 @@
     width: 26px;
     height: 33px;
     border: 0;
+    opacity: 1;
     background: url('../img/grade_thumb.svg');
     cursor: pointer;
   }
@@ -48,33 +55,31 @@
   }
 }
 
+.range_value {
+  position: absolute;
+  top: -40px;
+  left: 24px;
+  font-family: $fontMedium500;
+  font-size: 16px;
+}
+
 .wrap_ex {
-outline: 1px solid #000;
+  background-image: url('../img/scale.svg');
+  background-repeat: no-repeat;
+  background-position: 0 0;
 }
+  
+  .slider_range {
+    width: 100%;
+    height: 25px;
+    background: linear-gradient(to right, #ba1417 0.59%, #cd0800 9.86%, #f45800 19.12%, #fd9113 27.87%, #ffb800 38.16%, #d7e317 48.45%, #d1e01f 60.8%, #eaf65e 71.61%, #00d086 81.9%, #00ab23 90.65%, #056719 99.4%);
+    // mask-image: url('../img/thumb-line-1.svg');
+    // mask-position: 0px 0px;
+    // mask-size: 60px 25px;
+    // mask-repeat: no-repeat;
+    // mask: url('../img/thumb-line-1.svg') 0% 0/60px 25px, linear-gradient(to right, #fff calc(50% - 60px/2 + 7px), transparent 0 calc(50% + 60px/2 - 2px), #fff 0) right 0% top 20x/calc(200% - 60px) 4px;
+    // mask-repeat: no-repeat;
+    mask: url('../img/thumb-line-1.svg') 0% 0/60px 24px, linear-gradient(to right, #fff calc(50% - 60px/2 + 1px), transparent 0 calc(50% + 60px/2 - 1px), #fff 0) right 0% top 20px/calc(200% - 60px) 4px;
+    mask-repeat: no-repeat;
+  }
 
-.ex {
-  
-  width: 100%;
-  height: 100px;
-  background: linear-gradient(to right, #ba1417 0.59%, #cd0800 9.86%, #f45800 19.12%, #fd9113 27.87%, #ffb800 38.16%, #d7e317 48.45%, #d1e01f 60.8%, #eaf65e 71.61%, #00d086 81.9%, #00ab23 90.65%, #056719 99.4%);
-  // mask-image: url('../img/thumb-line.svg');
-  
-  // mask-position: 0px 0px;
-  // mask-size: 54px 40px;
-  // mask-repeat: no-repeat;
-  mask: url('../img/thumb-line.svg') 0% 0/54px 40px, linear-gradient(to right, #fff calc(50% - 54px/2 + 7px), transparent 0 calc(50% + 54px/2 - 2px), #fff 0) right 0% top 28px/calc(200% - 54px) 4px;
-  mask-repeat: no-repeat;
-}
-
-// .wrap_grade {
-//   width: 100%;
-//   height: 100px;
-//   background: #ba1417;
-//   background: -moz-linear-gradient(left, #ba1417 0.59%, #cd0800 9.86%, #f45800 19.12%, #fd9113 27.87%, #ffb800 38.16%, #d7e317 48.45%, #d1e01f 60.8%, #eaf65e 71.61%, #00d086 81.9%, #00ab23 90.65%, #056719 99.4%);
-//   background: -webkit-linear-gradient(left, #ba1417 0.59%, #cd0800 9.86%, #f45800 19.12%, #fd9113 27.87%, #ffb800 38.16%, #d7e317 48.45%, #d1e01f 60.8%, #eaf65e 71.61%, #00d086 81.9%, #00ab23 90.65%, #056719 99.4%);
-//   background: linear-gradient(to right, #ba1417 0.59%, #cd0800 9.86%, #f45800 19.12%, #fd9113 27.87%, #ffb800 38.16%, #d7e317 48.45%, #d1e01f 60.8%, #eaf65e 71.61%, #00d086 81.9%, #00ab23 90.65%, #056719 99.4%);
-//   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ba1417', endColorstr='#056719', GradientType=1);
-  
-// //   // background: linear-gradient(to right, rgb(255, 255, 255) calc(50% - 30px + 7px), transparent 0 calc(50% + 30px - 2px), rgb(255, 255, 255) 0);
-// //-webkit-mask: url('../img/Line 4.svg' -webkit-linear-gradient(left, rgb(255,255,255) calc(50% - 30px + 7px), transparent 0 transparent calc(50% + 30px - 2px), rgb(255,255,255) 0);
-// }

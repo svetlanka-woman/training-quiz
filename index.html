@@ -41,24 +41,10 @@
               пакета услуг “Премиальный”?
             </p>
             <div class="question__answer">
-              <div class="wrap_ex"><div class="ex"></div></div>
-              <div class="wrap_grade">
-                <input
-                  class="grade"
-                  type="range"
-                  min="1"
-                  max="10"
-                  value="5"
-                  list="rangeList"
-                  onchange="document.getElementById('rangeValue').innerHTML = this.value;"
-                />
-                <datalist id="rangeList">
-                  <option value="0" label="0"></option>
-                  <option value="5" label="5"></option>
-                  <option value="10" label="10"></option>
-                </datalist>
-
-                <span id="rangeValue">5</span>
+              <div class="slider_range"></div>
+              <div class="wrap_range">
+                <input class="range" type="range" min="0" max="10" value="0" />
+                <span class="range_value" id="rangeValue">0</span>
               </div>
             </div>
             <div class="answer-decryption disappointed">
@@ -92,7 +78,71 @@
           </div>
         </div>
       </div>
+
+      <div class="question">
+        <div class="question__header">
+          <div class="number">
+            <span class="number__current">1</span>
+            /
+            <span class="number__total">6</span>
+          </div>
+          <ul class="indicator">
+            <li class="indicator_black"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </div>
+
+        <div class="question__body">
+          <p class="question__text">
+            Насколько простым был для Вас процесс оформления / получения
+            пакета услуг “Премиальный”?
+          </p>
+          <div class="question__answer">
+            <div class="slider_range"></div>
+            <div class="wrap_range">
+              <input class="range" type="range" min="0" max="10" value="0" />
+              <span class="range_value" id="rangeValue">0</span>
+            </div>
+          </div>
+          <div class="answer-decryption disappointed">
+            <p class="answer-decryption__question">Что Вас разочаровало?</p>
+            <ul class="answer-decryption__list">
+              <li>
+                <img src="img/answer2/resume.svg" alt="Заявка" />
+                <p>Неудобная подача заявки</p>
+              </li>
+              <li>
+                <img src="img/answer2/files.svg" alt="Документы" />
+                <p>Большое кол-во требуемых документов/ объём анкеты</p>
+              </li>
+              <li>
+                <img src="img/answer2/clock.svg" alt="Время" />
+                <p>Долгое оформление</p>
+              </li>
+              <li>
+                <img
+                  src="img/answer2/bad-review.svg"
+                  alt="Получение продукта"
+                />
+                <p>Неудобное получение продукта</p>
+              </li>
+              <li>
+                <img src="img/answer2/help.svg" alt="Помощь" />
+                <p>Нежелание сотрудника помочь</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
       <!--.main-->
     </div>
+
+    <script src="js/script.js"></script>
   </body>
 </html>
