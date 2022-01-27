@@ -17,7 +17,7 @@
       </div>
       <!--.header-->
 
-      <div class="main">
+      <form>
         <div class="question">
           <div class="question__header">
             <div class="number">
@@ -43,43 +43,15 @@
             <div class="question__answer">
               <div class="slider_range"></div>
               <div class="wrap_range">
-                <input class="range" type="range" min="0" max="10" value="0" />
-                <span class="range_value" id="rangeValue">0</span>
+                <input class="range" name="answer_1" type="range" min="0" max="10" value="0" />
+                <span class="range_value">0</span>
               </div>
-            </div>
-            <div class="answer-decryption disappointed">
-              <p class="answer-decryption__question">Что Вас разочаровало?</p>
-              <ul class="answer-decryption__list">
-                <li>
-                  <img src="img/answer2/resume.svg" alt="Заявка" />
-                  <p>Неудобная подача заявки</p>
-                </li>
-                <li>
-                  <img src="img/answer2/files.svg" alt="Документы" />
-                  <p>Большое кол-во требуемых документов/ объём анкеты</p>
-                </li>
-                <li>
-                  <img src="img/answer2/clock.svg" alt="Время" />
-                  <p>Долгое оформление</p>
-                </li>
-                <li>
-                  <img
-                    src="img/answer2/bad-review.svg"
-                    alt="Получение продукта"
-                  />
-                  <p>Неудобное получение продукта</p>
-                </li>
-                <li>
-                  <img src="img/answer2/help.svg" alt="Помощь" />
-                  <p>Нежелание сотрудника помочь</p>
-                </li>
-              </ul>
             </div>
           </div>
         </div>
-      </div>
+      </а>
 
-      <div class="question">
+      <div class="qu estion">
         <div class="question__header">
           <div class="number">
             <span class="number__current">1</span>
@@ -104,16 +76,19 @@
           <div class="question__answer">
             <div class="slider_range"></div>
             <div class="wrap_range">
-              <input class="range" type="range" min="0" max="10" value="0" />
-              <span class="range_value" id="rangeValue">0</span>
+              <input class="range" name="answer_2" type="range" min="0" max="10" value="0" />
+              <span class="range_value">0</span>
             </div>
           </div>
           <div class="answer-decryption disappointed">
             <p class="answer-decryption__question">Что Вас разочаровало?</p>
             <ul class="answer-decryption__list">
               <li>
-                <img src="img/answer2/resume.svg" alt="Заявка" />
-                <p>Неудобная подача заявки</p>
+                <label>
+                  <img src="img/answer2/resume.svg" alt="Заявка" />
+                  <p>Неудобная подача заявки</p>
+                  <input type="checkbox" name="answer_2-1" id="answer_2-1">
+                </label>
               </li>
               <li>
                 <img src="img/answer2/files.svg" alt="Документы" />
@@ -138,10 +113,9 @@
           </div>
         </div>
       </div>
-    </div>
-
-      <!--.main-->
-    </div>
+    </form><!--form-->
+    
+    </div><!--.container-->
 
     <script src="js/script.js"></script>
   </body>

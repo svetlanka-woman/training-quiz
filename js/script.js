@@ -3,30 +3,32 @@ window.addEventListener('DOMContentLoaded', () => {
 
   const ranges = document.querySelectorAll('.range');
 
+  const arrGradient = ['#ba1417','#cd0800','#f45800','#fd9113', '#ffb800', '#d7e317', '#d1e01f', '#d1e01f', '#79E371', '#00ab23', '#00ab23'
+  ];
+
   ranges.forEach(range => {
-    range.addEventListener('input', (e) => {
-      const rangeValue = e.target.nextElementSibling,
-            sliderRange = e.target.parentElement.previousElementSibling;
-      // sliderRange.style.mask = 'url('../img/thumb-line-1.svg') 20% 0/60px 24px, linear-gradient(to right, #fff calc(50% - 60px/2 + 1px), transparent 0 calc(50% + 60px/2 - 1px), #fff 0) right 0% top 20px/calc(200% - 60px) 4px';
-      sliderRange.style.cssText = `-webkit-mask: url('../img/thumb-line-1.svg') ${+e.target.value * 10}% 0/60px 24px, linear-gradient(to right, #fff calc(50% - 60px/2 + 1px), transparent 0 calc(50% + 60px/2 - 1px), #fff 0) right ${+e.target.value * 10}% top 20px/calc(200% - 60px) 4px;
-      -webkit-mask-repeat: no-repeat;`;
-      sliderRange.style.maskPosition = (+e.target.value + 1) * 8.1 + '% + 0';
-      rangeValue.style.left = (+e.target.value + 1) * 8.1 + '%';
-      rangeValue.textContent = e.target.value;
-      console.log(e.target.parentElement.previousElementSibling);
+    range.addEventListener('input', () => {
+      const rangeValue = range.nextElementSibling,
+            sliderRange = range.parentElement.previousElementSibling;
+
+      sliderRange.style.cssText = `
+        -webkit-mask: url('../img/thumb-line.svg') ${+range.value * 10}% 0/60px 26px, linear-gradient(to right, #fff calc(50% - 60px/2 + 1px), transparent 0 calc(50% + 60px/2 - 1px), #fff 0) right ${+range.value * 10}% top 21px/calc(200% - 60px) 4px;
+        -webkit-mask-repeat: no-repeat;
+        mask: url('../img/thumb-line.svg') 0% 0/60px 26px, linear-gradient(to right, #fff calc(50% - 60px/2 + 1px), transparent 0 calc(50% + 60px/2 - 1px), #fff 0) right 0% top 21px/calc(200% - 60px) 4px;
+        mask-repeat: no-repeat;
+        `;
+      if (range.value == 0 && rangeValue.textContent == 1) {
+        rangeValue.style.left = '7.5%';
+      } else {
+        rangeValue.style.left = (+range.value + 1) * 8.1 + '%';
+      }
+      
+      rangeValue.style.color = arrGradient[+range.value];
+      rangeValue.textContent = range.value;
+      sliderRange.style.background = 'linear-gradient(to right, #ba1417 0.59%, #cd0800 9.86%, #f45800 19.12%, #fd9113 27.87%, #ffb800 38.16%, #d7e317 48.45%, #d1e01f 60.8%, #eaf65e 71.61%, #00d086 81.9%, #00ab23 90.65%, #056719 99.4%)';
+      
     });
+
   });
 
-// const input = document.querySelector('input');
-// const log = document.getElementById('rangeValue');
-
-// input.addEventListener('input', updateValue);
-
-// function updateValue(e) {
-//   log.textContent = e.target.value;
-// }
-
-//   console.log('5');
-
-  // oninput="document.getElementById('rangeValue').innerHTML = this.value;
 });

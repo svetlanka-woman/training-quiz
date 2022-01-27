@@ -142,9 +142,13 @@ ol[class] {
 
 .wrap_range {
   width: 100%;
-  padding: 0px 17px;
-  margin-top: -10px;
+  padding: 6px 17px;
+  margin-top: -17px;
   position: relative;
+  background-image: url(../img/scale.svg);
+  background-repeat: no-repeat;
+  background-size: 83%;
+  background-position: center 0px;
 }
 
 .range {
@@ -175,8 +179,8 @@ ol[class] {
 
 .range_value {
   position: absolute;
-  top: -40px;
-  left: 24px;
+  top: -32px;
+  left: 25px;
   font-family: "Montserrat-Medium", serif;
   font-size: 16px;
 }
@@ -190,10 +194,9 @@ ol[class] {
 .slider_range {
   width: 100%;
   height: 25px;
-  background: -webkit-gradient(linear, left top, right top, color-stop(0.59%, #ba1417), color-stop(9.86%, #cd0800), color-stop(19.12%, #f45800), color-stop(27.87%, #fd9113), color-stop(38.16%, #ffb800), color-stop(48.45%, #d7e317), color-stop(60.8%, #d1e01f), color-stop(71.61%, #eaf65e), color-stop(81.9%, #00d086), color-stop(90.65%, #00ab23), color-stop(99.4%, #056719));
-  background: linear-gradient(to right, #ba1417 0.59%, #cd0800 9.86%, #f45800 19.12%, #fd9113 27.87%, #ffb800 38.16%, #d7e317 48.45%, #d1e01f 60.8%, #eaf65e 71.61%, #00d086 81.9%, #00ab23 90.65%, #056719 99.4%);
-  -webkit-mask: url("../img/thumb-line-1.svg") 0% 0/60px 24px, linear-gradient(to right, #fff calc(50% - 60px/2 + 1px), transparent 0 calc(50% + 60px/2 - 1px), #fff 0) right 0% top 20px/calc(200% - 60px) 4px;
-          mask: url("../img/thumb-line-1.svg") 0% 0/60px 24px, linear-gradient(to right, #fff calc(50% - 60px/2 + 1px), transparent 0 calc(50% + 60px/2 - 1px), #fff 0) right 0% top 20px/calc(200% - 60px) 4px;
+  background-color: #a3a3a3;
+  -webkit-mask: url("../img/thumb-line.svg") 0% 0/60px 26px, linear-gradient(to right, #fff calc(50% - 60px/2 + 1px), transparent 0 calc(50% + 60px/2 - 1px), #fff 0) right 0% top 21px/calc(200% - 60px) 4px;
+          mask: url("../img/thumb-line.svg") 0% 0/60px 26px, linear-gradient(to right, #fff calc(50% - 60px/2 + 1px), transparent 0 calc(50% + 60px/2 - 1px), #fff 0) right 0% top 21px/calc(200% - 60px) 4px;
   -webkit-mask-repeat: no-repeat;
           mask-repeat: no-repeat;
 }
