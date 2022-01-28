@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/style.css" />
     <title>Тестовый опросник</title>
   </head>
+
   <body>
     <div class="container">
       <div class="header">
@@ -43,79 +44,259 @@
             <div class="question__answer">
               <div class="slider_range"></div>
               <div class="wrap_range">
-                <input class="range" name="answer_1" type="range" min="0" max="10" value="0" />
+                <input
+                  class="range"
+                  name="answer_1"
+                  type="range"
+                  min="0"
+                  max="10"
+                  value="0"
+                />
                 <span class="range_value">0</span>
               </div>
             </div>
           </div>
         </div>
-      </а>
+        <!--question 1-->
 
-      <div class="qu estion">
-        <div class="question__header">
-          <div class="number">
-            <span class="number__current">1</span>
-            /
-            <span class="number__total">6</span>
-          </div>
-          <ul class="indicator">
-            <li class="indicator_black"></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-          </ul>
-        </div>
-
-        <div class="question__body">
-          <p class="question__text">
-            Насколько простым был для Вас процесс оформления / получения
-            пакета услуг “Премиальный”?
-          </p>
-          <div class="question__answer">
-            <div class="slider_range"></div>
-            <div class="wrap_range">
-              <input class="range" name="answer_2" type="range" min="0" max="10" value="0" />
-              <span class="range_value">0</span>
+        <div class="question">
+          <div class="question__header">
+            <div class="number">
+              <span class="number__current">1</span>
+              /
+              <span class="number__total">6</span>
             </div>
-          </div>
-          <div class="answer-decryption disappointed">
-            <p class="answer-decryption__question">Что Вас разочаровало?</p>
-            <ul class="answer-decryption__list">
-              <li>
-                <label>
-                  <img src="img/answer2/resume.svg" alt="Заявка" />
-                  <p>Неудобная подача заявки</p>
-                  <input type="checkbox" name="answer_2-1" id="answer_2-1">
-                </label>
-              </li>
-              <li>
-                <img src="img/answer2/files.svg" alt="Документы" />
-                <p>Большое кол-во требуемых документов/ объём анкеты</p>
-              </li>
-              <li>
-                <img src="img/answer2/clock.svg" alt="Время" />
-                <p>Долгое оформление</p>
-              </li>
-              <li>
-                <img
-                  src="img/answer2/bad-review.svg"
-                  alt="Получение продукта"
-                />
-                <p>Неудобное получение продукта</p>
-              </li>
-              <li>
-                <img src="img/answer2/help.svg" alt="Помощь" />
-                <p>Нежелание сотрудника помочь</p>
-              </li>
+            <ul class="indicator">
+              <li class="indicator_black"></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
             </ul>
           </div>
+
+          <div class="question__body">
+            <p class="question__text">
+              Насколько простым был для Вас процесс оформления / получения
+              пакета услуг “Премиальный”?
+            </p>
+            <div class="question__answer">
+              <div class="slider_range"></div>
+              <div class="wrap_range">
+                <input
+                  class="range"
+                  name="answer_2"
+                  type="range"
+                  min="0"
+                  max="10"
+                  value="0"
+                />
+                <span class="range_value">0</span>
+              </div>
+            </div>
+            <div class="answer-extended disappointed">
+              <p class="answer-extended__question">Что Вас разочаровало?</p>
+              <ul class="answer-extended__list">
+                <li>
+                  <input type="checkbox" name="answer_2-1" id="answer_2-1" />
+                  <label for="answer_2-1">
+                    <img
+                      class="img-colors"
+                      src="img/answer2/resume.svg"
+                      alt="Заявка"
+                    />
+                    <img
+                      class="img-white"
+                      src="img/answer2/active/resume.svg"
+                      alt="Заявка"
+                    />
+                    <p>Неудобная подача заявки</p>
+                  </label>
+                </li>
+                <li>
+                  <input type="checkbox" name="answer_2-2" id="answer_2-2" />
+                  <label for="answer_2-2">
+                    <img
+                      class="img-colors"
+                      src="img/answer2/files.svg"
+                      alt="Документы"
+                    />
+                    <img
+                      class="img-white"
+                      src="img/answer2/active/files.svg"
+                      alt="Документы"
+                    />
+                    <p>Большое кол-во требуемых документов/ объём анкеты</p>
+                  </label>
+                </li>
+                <li>
+                  <input type="checkbox" name="answer_2-3" id="answer_2-3" />
+                  <label for="answer_2-3">
+                    <img
+                      class="img-colors"
+                      src="img/answer2/clock.svg"
+                      alt="Время"
+                    />
+                    <img
+                      class="img-white"
+                      src="img/answer2/active/clock.svg"
+                      alt="Время"
+                    />
+                    <p>Долгое оформление</p>
+                  </label>
+                </li>
+                <li>
+                  <input type="checkbox" name="answer_2-4" id="answer_2-4" />
+                  <label for="answer_2-4">
+                    <img
+                      class="img-colors"
+                      src="img/answer2/bad-review.svg"
+                      alt="Получение продукта"
+                    />
+                    <img
+                      class="img-white"
+                      src="img/answer2/active/bad-review.svg"
+                      alt="Получение продукта"
+                    />
+                    <p>Неудобное получение продукта</p>
+                  </label>
+                </li>
+                <li>
+                  <input type="checkbox" name="answer_2-5" id="answer_2-5" />
+                  <label for="answer_2-5">
+                    <img
+                      class="img-colors"
+                      src="img/answer2/help.svg"
+                      alt="Помощь"
+                    />
+                    <img
+                      class="img-white"
+                      src="img/answer2/active/help.svg"
+                      alt="Помощь"
+                    />
+                    <p>Нежелание сотрудника помочь</p>
+                  </label>
+                </li>
+              </ul>
+            </div>
+            <!--.answer-extended disappointed-->
+
+            <div class="answer-extended liked">
+              <p class="answer-extended__question">
+                Что понравилось больше всего?
+              </p>
+              <ul class="answer-extended__list">
+                <li>
+                  <input
+                    type="checkbox"
+                    name="answer_2-1_like"
+                    id="answer_2-1_like"
+                  />
+                  <label for="answer_2-1_like">
+                    <img
+                      class="img-colors"
+                      src="img/answer2/resume.svg"
+                      alt="Заявка"
+                    />
+                    <img
+                      class="img-white"
+                      src="img/answer2/active/resume.svg"
+                      alt="Заявка"
+                    />
+                    <p>Удобство подачи заявки</p>
+                  </label>
+                </li>
+                <li>
+                  <input
+                    type="checkbox"
+                    name="answer_2-2_like"
+                    id="answer_2-2_like"
+                  />
+                  <label for="answer_2-2_like">
+                    <img
+                      class="img-colors"
+                      src="img/answer2/files.svg"
+                      alt="Документы"
+                    />
+                    <img
+                      class="img-white"
+                      src="img/answer2/active/files.svg"
+                      alt="Документы"
+                    />
+                    <p>Не требуется много документов</p>
+                  </label>
+                </li>
+                <li>
+                  <input
+                    type="checkbox"
+                    name="answer_2-3_like"
+                    id="answer_2-3_like"
+                  />
+                  <label for="answer_2-3_like">
+                    <img
+                      class="img-colors"
+                      src="img/answer2/clock.svg"
+                      alt="Время"
+                    />
+                    <img
+                      class="img-white"
+                      src="img/answer2/active/clock.svg"
+                      alt="Время"
+                    />
+                    <p>Быстрое оформления</p>
+                  </label>
+                </li>
+                <li>
+                  <input
+                    type="checkbox"
+                    name="answer_2-4_like"
+                    id="answer_2-4_like"
+                  />
+                  <label for="answer_2-4_like">
+                    <img
+                      class="img-colors"
+                      src="img/answer2/bad-review.svg"
+                      alt="Получение продукта"
+                    />
+                    <img
+                      class="img-white"
+                      src="img/answer2/active/bad-review.svg"
+                      alt="Получение продукта"
+                    />
+                    <p>Удобоное получение продукта</p>
+                  </label>
+                </li>
+                <li>
+                  <input
+                    type="checkbox"
+                    name="answer_2-5_like"
+                    id="answer_2-5_like"
+                  />
+                  <label for="answer_2-5_like">
+                    <img
+                      class="img-colors"
+                      src="img/answer2/help.svg"
+                      alt="Помощь"
+                    />
+                    <img
+                      class="img-white"
+                      src="img/answer2/active/help.svg"
+                      alt="Помощь"
+                    />
+                    <p>Желание сотрудника помочь</p>
+                  </label>
+                </li>
+              </ul>
+            </div>
+            <!--.answer-extended liked-->
+          </div>
         </div>
-      </div>
-    </form><!--form-->
-    
-    </div><!--.container-->
+        <!--.question 2-->
+      </form>
+      <!--form-->
+    </div>
+    <!--.container-->
 
     <script src="js/script.js"></script>
   </body>

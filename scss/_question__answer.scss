@@ -47,6 +47,7 @@
   left: 25px;
   font-family: $fontMedium500;
   font-size: 16px;
+  display: none;
 }
 
 .wrap_ex {
@@ -60,10 +61,6 @@
     height: 25px;
     // background: linear-gradient(to right, #ba1417 0.59%, #cd0800 9.86%, #f45800 19.12%, #fd9113 27.87%, #ffb800 38.16%, #d7e317 48.45%, #d1e01f 60.8%, #eaf65e 71.61%, #00d086 81.9%, #00ab23 90.65%, #056719 99.4%);
     background-color: #a3a3a3;
-    // mask-image: url('../img/thumb-line-1.svg');
-    // mask-position: 0px 0px;
-    // mask-size: 60px 25px;
-    // mask-repeat: no-repeat;
     mask: url('../img/thumb-line.svg') 0% 0/60px 26px, linear-gradient(to right, #fff calc(50% - 60px/2 + 1px), transparent 0 calc(50% + 60px/2 - 1px), #fff 0) right 0% top 21px/calc(200% - 60px) 4px;
     mask-repeat: no-repeat;
   }

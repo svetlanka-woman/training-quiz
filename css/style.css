@@ -183,6 +183,7 @@ ol[class] {
   left: 25px;
   font-family: "Montserrat-Medium", serif;
   font-size: 16px;
+  display: none;
 }
 
 .wrap_ex {
@@ -201,12 +202,13 @@ ol[class] {
           mask-repeat: no-repeat;
 }
 
-.answer-decryption {
+.answer-extended {
   background-color: #F0F0F0;
   padding: 20px 0px 2px 18px;
+  display: none;
 }
 
-.answer-decryption__question {
+.answer-extended__question {
   font-family: "Montserrat-Medium", serif;
   font-size: 14px;
   -webkit-box-pack: justify;
@@ -214,7 +216,7 @@ ol[class] {
           justify-content: space-between;
 }
 
-.answer-decryption__list {
+.answer-extended__list {
   margin-top: 22px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -222,20 +224,59 @@ ol[class] {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
 }
-.answer-decryption__list li {
+.answer-extended__list li {
   -webkit-box-flex: 0;
       -ms-flex: 0 1 29%;
           flex: 0 1 29%;
-  background-color: #fff;
   margin-right: 15px;
   margin-bottom: 15px;
   text-align: center;
-  padding: 10px 5px 5px;
+  position: relative;
+  height: 110px;
 }
-.answer-decryption__list p {
+.answer-extended__list p {
   font-family: "Montserrat", serif;
   font-size: 10px;
   line-height: 14px;
+  padding-top: 6px;
+}
+.answer-extended__list label {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 10px 5px 5px;
+  background-color: #fff;
+}
+.answer-extended__list input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+.answer-extended__list input ~ label {
+  -webkit-transition: 0.55s -webkit-transform;
+  transition: 0.55s -webkit-transform;
+  transition: 0.55s transform;
+  transition: 0.55s transform, 0.55s -webkit-transform;
+}
+.answer-extended__list input ~ label img {
+  display: block;
+  margin: 0 auto;
+}
+.answer-extended__list input ~ label .img-white {
+  display: none;
+}
+.answer-extended__list input:checked ~ label {
+  -webkit-transform: rotateY(360deg);
+          transform: rotateY(360deg);
+  background: #E9041E;
+  color: #fff;
+}
+.answer-extended__list input:checked ~ label .img-white {
+  display: block;
+}
+.answer-extended__list input:checked ~ label .img-colors {
+  display: none;
 }
 
 /*# sourceMappingURL=style.css.map */
