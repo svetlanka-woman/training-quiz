@@ -18,7 +18,7 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 
   question.forEach((item, q) => {
-    if (q > 0 && q < 4) {
+    if (q > 0 && q < 4) { // (q > 0)
       item.classList.add('hide');
     }
     renderQuestionHeader(q);

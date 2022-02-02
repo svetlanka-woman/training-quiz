@@ -25,13 +25,10 @@ ol[class] {
   background-color: $colorWhite;
 }
 
-
-
-
 @import '_header.scss';
 @import '_question__header.scss';
 @import '_question__body.scss';
-
+@import '_submit.scss';
 
 .fade {
   animation-name: fade;

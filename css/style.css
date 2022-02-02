@@ -316,6 +316,24 @@ label[for="comment"] {
   color: #E9041E;
 }
 
+#field-submit {
+  background-color: #F0F0F0;
+  padding: 50px 0;
+}
+
+#submit {
+  width: 247px;
+  height: 58px;
+  border: 2px solid #E8041E;
+  border-radius: 30px;
+  margin: 0 auto;
+  display: block;
+  cursor: pointer;
+  font-family: "Montserrat", serif;
+  font-size: 17px;
+  letter-spacing: 0.02em;
+}
+
 .fade {
   -webkit-animation-name: fade;
           animation-name: fade;

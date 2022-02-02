@@ -1,0 +1,17 @@
+#field-submit {
+  background-color: $bgGrey;
+  padding: 50px 0;
+}
+
+#submit {
+  width: 247px;
+  height: 58px;
+  border: 2px solid #E8041E;
+  border-radius: 30px;
+  margin: 0 auto;
+  display: block;
+  cursor: pointer;
+  font-family: $fontRegular400;
+  font-size: 17px;
+  letter-spacing: 0.02em;
+}
