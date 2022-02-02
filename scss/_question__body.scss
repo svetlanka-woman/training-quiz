@@ -9,3 +9,41 @@
 @import '_question__answer.scss';
 
 @import '_answer-extended.scss';
+
+#comment {
+  border: none;
+  border-bottom: 1px solid #979797;
+  width: 100%;
+  outline: none;
+  resize: none;
+  padding: 6px 0;
+  font-size: 14px;
+  overflow: hidden;
+}
+
+p.comment {
+  padding: 0px 18px 15px 18px;
+  font-family: $fontRegular400;
+  font-size: 9px;
+  color: #5A5959;
+  text-align: end;
+}
+
+label[for="comment"] {
+  font-family: $fontRegular400;
+  font-size: 10px;
+  color: #5A5959;
+  padding-left: 35px;
+  background-image: url(../img/comment.svg);
+  background-repeat: no-repeat;
+  background-position: 20px 0;
+}
+
+.question_comment {
+  .question__text {
+    padding-bottom: 50px;
+    span {
+      color: $colorRed;
+    }
+  }
+}

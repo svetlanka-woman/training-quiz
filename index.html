@@ -1,178 +1,145 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/style.css" />
-    <title>Тестовый опросник</title>
-  </head>
 
-  <body>
-    <div class="container">
-      <div class="header">
-        <img class="header__logo" src="img/logo.svg" alt="Логотип" />
-        <h1 class="header__title">
-          <span>Пакет услуг</span><br />“Премиальный”
-        </h1>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/style.css" />
+  <title>Тестовый опросник</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+      <img class="header__logo" src="img/logo.svg" alt="Логотип" />
+      <h1 class="header__title">
+        <span>Пакет услуг</span><br />“Премиальный”
+      </h1>
+    </div> <!--.header-->
+
+    <form>
+      <div class="question active" id="question_1">
+        <div class="question__header">
+          <div class="number"></div>
+          <ul class="indicator"></ul>
+        </div>
+
+        <div class="question__body">
+          <p class="question__text">
+            Насколько Вы довольны пакетом услуг “Премиальный” Росбанка в
+            целом?
+          </p>
+          <div class="question__answer">
+            <div class="slider_range"></div>
+            <div class="wrap_range">
+              <input class="range" name="answer_1" type="range" min="0" max="10" value="0" />
+              <span class="range_value">0</span>
+            </div>
+          </div>
+        </div>
+      </div> <!--question 1-->
+
+      <div class="question" id="question_2">
+        <div class="question__header">
+          <div class="number"></div>
+          <ul class="indicator"></ul>
+        </div>
+
+        <div class="question__body">
+          <p class="question__text">
+            Насколько простым был для Вас процесс оформления / получения
+            пакета услуг “Премиальный”?
+          </p>
+          <div class="question__answer">
+            <div class="slider_range"></div>
+            <div class="wrap_range">
+              <input class="range" name="answer_2" type="range" min="0" max="10" value="0" />
+              <span class="range_value">0</span>
+            </div>
+          </div>
+        </div>
+      </div> <!--question 2-->
+
+      <div class="question" id="question_3">
+        <div class="question__header">
+          <div class="number"></div>
+          <ul class="indicator"></ul>
+        </div>
+
+        <div class="question__body">
+          <p class="question__text">
+            Оцените достаточность и понятность информации в мобильном банке
+            или при консультации
+          </p>
+          <div class="question__answer">
+            <div class="slider_range"></div>
+            <div class="wrap_range">
+              <input class="range" name="answer_3" type="range" min="0" max="10" value="0" />
+              <span class="range_value">0</span>
+            </div>
+          </div> 
+        </div>
+      </div> <!--question 3-->
+
+      <div class="question" id="question_4">
+        <div class="question__header">
+          <div class="number"></div>
+          <ul class="indicator"></ul>
+        </div>
+
+        <div class="question__body">
+          <p class="question__text">
+            Оцените понятность тарифов и условий обслуживания
+          </p>
+          <div class="question__answer">
+            <div class="slider_range"></div>
+            <div class="wrap_range">
+              <input class="range" name="answer_4" type="range" min="0" max="10" value="0" />
+              <span class="range_value">0</span>
+            </div>
+          </div>
+        </div>
+      </div> <!--question 4-->
+
+      <div class="question question_comment" id="question_5">
+        <div class="question__header">
+          <div class="number"></div>
+          <ul class="indicator"></ul>
+        </div>
+        <div class="question__body">
+          <p class="question__text">
+            <span>Оставьте Ваш комментарий.</span> Ваше мнение очень важно для нас!
+          </p>
+          <p><label for="comment">Оставить комментарий</label></p>
+          <p class="comment">
+            <textarea id="comment" name="comment" wrap="soft" maxlength="1000" rows="1"></textarea>
+            Ограничение количества символов в комментарии: <span id="char-limit">0 из 1000</span>
+          </p>
+        </div>
+      </div> <!--question 5-->
+
+      <div class="question" id="question_6">
+        <div class="question__header">
+          <div class="number"></div>
+          <ul class="indicator"></ul>
+        </div>
+        <div class="question__body">
+          <p class="question__text">
+            Можем ли мы связаться с Вами по номеру телефону для более
+            подробного обсуждения Ваших ответов?
+          </p>
+          <div class="question__answer"></div>
+        </div>
+      </div> <!--question 6-->
+
+      <div id="btn-submit">
+        <button ></button>
       </div>
-      <!--.header-->
+    </form> <!--form-->
+  </div> <!--.container-->
 
-      <form>
-        <div class="question active" id="question_1">
-          <div class="question__header">
-            <div class="number"></div>
-            <ul class="indicator"></ul>
-          </div>
+  <script src="js/script.js"></script>
+</body>
 
-          <div class="question__body">
-            <p class="question__text">
-              Насколько Вы довольны пакетом услуг “Премиальный” Росбанка в
-              целом?
-            </p>
-            <div class="question__answer">
-              <div class="slider_range"></div>
-              <div class="wrap_range">
-                <input
-                  class="range"
-                  name="answer_1"
-                  type="range"
-                  min="0"
-                  max="10"
-                  value="0"
-                />
-                <span class="range_value">0</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!--question 1-->
-
-        <div class="question" id="question_2">
-          <div class="question__header">
-            <div class="number"></div>
-            <ul class="indicator"></ul>
-          </div>
-
-          <div class="question__body">
-            <p class="question__text">
-              Насколько простым был для Вас процесс оформления / получения
-              пакета услуг “Премиальный”?
-            </p>
-            <div class="question__answer">
-              <div class="slider_range"></div>
-              <div class="wrap_range">
-                <input
-                  class="range"
-                  name="answer_2"
-                  type="range"
-                  min="0"
-                  max="10"
-                  value="0"
-                />
-                <span class="range_value">0</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!--question 2-->
-
-        <div class="question" id="question_3">
-          <div class="question__header">
-            <div class="number"></div>
-            <ul class="indicator"></ul>
-          </div>
-
-          <div class="question__body">
-            <p class="question__text">
-              Оцените достаточность и понятность информации в мобильном банке
-              или при консультации
-            </p>
-            <div class="question__answer">
-              <div class="slider_range"></div>
-              <div class="wrap_range">
-                <input
-                  class="range"
-                  name="answer_3"
-                  type="range"
-                  min="0"
-                  max="10"
-                  value="0"
-                />
-                <span class="range_value">0</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!--question 3-->
-
-        <div class="question" id="question_4">
-          <div class="question__header">
-            <div class="number"></div>
-            <ul class="indicator"></ul>
-          </div>
-
-          <div class="question__body">
-            <p class="question__text">
-              Оцените понятность тарифов и условий обслуживания
-            </p>
-            <div class="question__answer">
-              <div class="slider_range"></div>
-              <div class="wrap_range">
-                <input
-                  class="range"
-                  name="answer_4"
-                  type="range"
-                  min="0"
-                  max="10"
-                  value="0"
-                />
-                <span class="range_value">0</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!--question 4-->
-
-        <div class="question" id="question_5">
-          <div class="question__header">
-            <div class="number"></div>
-            <ul class="indicator"></ul>
-          </div>
-
-          <div class="question__body">
-            <p class="question__text">
-              Оставьте Ваш комментарий. Ваше мнение очень важно для нас!
-            </p>
-            <div class="question__answer"></div>
-          </div>
-        </div>
-        <!--question 5-->
-
-        <div class="question" id="question_6">
-          <div class="question__header">
-            <div class="number">
-              <span class="number__current">6</span>
-              /
-              <span class="number__total">6</span>
-            </div>
-            <ul class="indicator"></ul>
-          </div>
-
-          <div class="question__body">
-            <p class="question__text">
-              Можем ли мы связаться с Вами по номеру телефону для более
-              подробного обсуждения Ваших ответов?
-            </p>
-            <div class="question__answer"></div>
-          </div>
-        </div>
-        <!--question 6-->
-      </form>
-      <!--form-->
-    </div>
-    <!--.container-->
-
-    <script src="js/script.js"></script>
-  </body>
 </html>

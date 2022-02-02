@@ -18,7 +18,7 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 
   question.forEach((item, q) => {
-    if (q > 0) {
+    if (q > 0 && q < 4) {
       item.classList.add('hide');
     }
     renderQuestionHeader(q);
@@ -90,9 +90,6 @@ window.addEventListener('DOMContentLoaded', () => {
   function renderAnswerExtended() {
     questionBody.forEach((item, q) => {
       if (q > 0 && q < questionBody.length - 2) {
-        const answerExtendedDisap = document.createElement('div');
-        answerExtendedDisap.classList.add('answer-extended', `answer_${q + 1}`, 'disappointed');
-
         let liDisap = '', 
             liLike = '';
 
@@ -117,6 +114,8 @@ window.addEventListener('DOMContentLoaded', () => {
                       </li>`;
         }
 
+        const answerExtendedDisap = document.createElement('div');
+        answerExtendedDisap.classList.add('answer-extended', `answer_${q + 1}`, 'disappointed');
         answerExtendedDisap.innerHTML = `
           <p class="answer-extended__question">Что Вас разочаровало?</p>
           <ul class="answer-extended__list">
@@ -153,7 +152,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     range.value = 0;
 
-    const showColorRange = () => {
+    function showColorRange() {
       rangeValue.style.display = 'block';
       rangeValue.style.color = arrGradient[+range.value];
       sliderRange.style.background = 'linear-gradient(to right, #ba1417 0.59%, #cd0800 9.86%, #f45800 19.12%, #fd9113 27.87%, #ffb800 38.16%, #d7e317 48.45%, #d1e01f 60.8%, #eaf65e 71.61%, #00d086 81.9%, #00ab23 90.65%, #056719 99.4%)';
@@ -181,6 +180,7 @@ window.addEventListener('DOMContentLoaded', () => {
       if (answerName == 'answer_1') {
         question[1].classList.remove('hide');
         question[1].classList.add('show', 'fade');
+        scrollNext();
       } else {
         if (range.value > 6) {
           answerExtendedLike.classList.add('show', 'fade');
@@ -195,9 +195,18 @@ window.addEventListener('DOMContentLoaded', () => {
             checkbox.checked = false;
           });
         }
+        scrollNext();
       }
     });
+
   });
+
+  function scrollNext() {
+    window.scrollBy({
+          top: 400,
+          behavior: 'smooth'
+        });
+  }
 
   const answerCheckbox = document.querySelectorAll('.answer-checkbox');
   
@@ -206,10 +215,28 @@ window.addEventListener('DOMContentLoaded', () => {
     
     checkbox.addEventListener('click', () => {
       if (checkbox.checked == true) {
-        question[num].classList.remove('hide');
-        question[num].classList.add('show', 'fade');
+        if (question[num].classList.contains('hide')) {
+          setTimeout(scrollNext, 3000);
+          question[num].classList.remove('hide');
+          question[num].classList.add('show', 'fade');
+        }
       }
     });
+  });
+
+  const comment = document.getElementById('comment'), 
+        charLimit = document.getElementById('char-limit');
+
+
+  comment.addEventListener('input', (e) => {
+    const elem = e.target,
+          currentLength = elem.value.length,
+          maxLength = elem.getAttribute('maxlength');
+
+    charLimit.textContent = `${currentLength} из ${maxLength}`;
+          
+    elem.style.cssText = 'height: auto;';
+    elem.style.cssText = 'height:' + elem.scrollHeight + 'px';
   });
 
 });
