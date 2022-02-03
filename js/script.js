@@ -172,7 +172,9 @@ window.addEventListener('DOMContentLoaded', () => {
       rangeValue.textContent = range.value;
     });
     
-    const num = +answerName.charAt(7); //question number
+    const num = +answerName.charAt(7),
+          blockSubmit = document.getElementById('block-submit');
+     //question number
     
     range.addEventListener('click', () => {
       
@@ -207,11 +209,13 @@ window.addEventListener('DOMContentLoaded', () => {
             console.log(answerExtendedDisappointed);
           }
           if (num == question.length-2) {
+            
             question[num].classList.add('show', 'fade');
             blockSubmit.classList.add('show', 'fade');
             scrollNext(question[num]);
           }
         }
+        
       }
 
       if (question[question.length-2].classList.contains('show')) {
@@ -242,8 +246,7 @@ window.addEventListener('DOMContentLoaded', () => {
         });
   }
 
-  const answerCheckbox = document.querySelectorAll('.answer-checkbox'),
-        blockSubmit = document.getElementById('block-submit');
+  const answerCheckbox = document.querySelectorAll('.answer-checkbox');
   
   answerCheckbox.forEach(checkbox => {
     const num = checkbox.getAttribute('name').charAt(7); // question number
