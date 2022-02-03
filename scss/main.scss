@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+html {
+  overflow-y: scroll;
+}
+
 ul[class],
 ol[class] {
   list-style: none;
@@ -30,6 +34,11 @@ ol[class] {
 @import '_question__body.scss';
 @import '_submit.scss';
 
+
+.hide {
+  display: none;
+}
+
 .fade {
   animation-name: fade;
   animation-duration: 1.5s;
@@ -41,8 +50,4 @@ ol[class] {
 
 .show {
   display: block;
-}
-
-.hide {
-  display: none;
 }

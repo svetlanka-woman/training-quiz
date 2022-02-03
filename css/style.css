@@ -5,6 +5,10 @@
           box-sizing: border-box;
 }
 
+html {
+  overflow-y: scroll;
+}
+
 ul[class],
 ol[class] {
   list-style: none;
@@ -126,6 +130,14 @@ ol[class] {
 }
 .indicator li.indicator_black {
   background-color: #000;
+}
+
+.question {
+  display: none;
+}
+
+#question_1 {
+  display: block;
 }
 
 .question__text {
@@ -316,7 +328,7 @@ label[for="comment"] {
   color: #E9041E;
 }
 
-#field-submit {
+#block-submit {
   background-color: #F0F0F0;
   padding: 50px 0;
 }
@@ -332,6 +344,10 @@ label[for="comment"] {
   font-family: "Montserrat", serif;
   font-size: 17px;
   letter-spacing: 0.02em;
+}
+
+.hide {
+  display: none;
 }
 
 .fade {
@@ -360,10 +376,6 @@ label[for="comment"] {
 }
 .show {
   display: block;
-}
-
-.hide {
-  display: none;
 }
 
 /*# sourceMappingURL=style.css.map */

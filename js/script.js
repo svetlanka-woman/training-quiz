@@ -18,13 +18,10 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 
   question.forEach((item, q) => {
-    if (q > 0 && q < 4) { // (q > 0)
-      item.classList.add('hide');
-    }
     renderQuestionHeader(q);
   });
 
-  const answerExtended = [
+  const answersExtended = [
     {
       num: 1
     },
@@ -93,9 +90,9 @@ window.addEventListener('DOMContentLoaded', () => {
         let liDisap = '', 
             liLike = '';
 
-        for (let i = 0; i <= answerExtended[q].src.length-1; i++) {
-          const {num, src, alt, pDisap, pLike} = answerExtended[q];
-          let number = `${num}-${i+1}`;
+        for (let i = 0; i <= answersExtended[q].src.length-1; i++) {
+          const {num, src, alt, pDisap, pLike} = answersExtended[q];
+          let number = `${num}-${i+1}`;   //extended question number 
           liDisap += `<li>
                         <input type="checkbox" class="answer-checkbox" name="answer_${number}_disap" id="answer_${number}_disap" />
                         <label for="answer_${number}_disap">
@@ -174,14 +171,20 @@ window.addEventListener('DOMContentLoaded', () => {
       showColorRange();
       rangeValue.textContent = range.value;
     });
-
+    
+    const num = +answerName.charAt(7); //question number
+    
     range.addEventListener('click', () => {
+      
       showColorRange();
-      if (answerName == 'answer_1') {
-        question[1].classList.remove('hide');
-        question[1].classList.add('show', 'fade');
-        scrollNext();
-      } else {
+      
+      if (num == '1') {
+        if (!question[num].classList.contains('show')) {
+          question[num].classList.add('show', 'fade');
+          scrollNext(question[num]);
+        }
+      } else { 
+
         if (range.value > 6) {
           answerExtendedLike.classList.add('show', 'fade');
           answerExtendedDisappointed.classList.remove('show', 'fade');
@@ -195,30 +198,64 @@ window.addEventListener('DOMContentLoaded', () => {
             checkbox.checked = false;
           });
         }
-        scrollNext();
+        if (!question[num].classList.contains('show')) {
+          if (answerExtendedLike.classList.contains('show')) {
+            scrollNext(answerExtendedLike);
+            console.log(answerExtendedLike);
+          } else {
+            scrollNext(answerExtendedDisappointed);
+            console.log(answerExtendedDisappointed);
+          }
+          if (num == question.length-2) {
+            question[num].classList.add('show', 'fade');
+            blockSubmit.classList.add('show', 'fade');
+            scrollNext(question[num]);
+          }
+        }
       }
+
+      if (question[question.length-2].classList.contains('show')) {
+        if (checkValueRanges()) {
+          question[question.length-1].classList.add('show', 'fade');
+        } else {
+          question[question.length-1].classList.remove('show', 'fade');
+        }
+      }
+
     });
 
   });
 
-  function scrollNext() {
+  function checkValueRanges() {
+    const arrValueRanges = [];
+        ranges.forEach(item => {
+          arrValueRanges.push(item.value);
+        })
+        return arrValueRanges.some(item => item < 7);
+  }
+
+  function scrollNext(elem, elem2 = 0) {
+    const elemHeight = elem.getBoundingClientRect().height;
     window.scrollBy({
-          top: 400,
+          top: elemHeight + elem2 + 20,
           behavior: 'smooth'
         });
   }
 
-  const answerCheckbox = document.querySelectorAll('.answer-checkbox');
+  const answerCheckbox = document.querySelectorAll('.answer-checkbox'),
+        blockSubmit = document.getElementById('block-submit');
   
   answerCheckbox.forEach(checkbox => {
-    const num = checkbox.getAttribute('name').charAt(7);
-    
+    const num = checkbox.getAttribute('name').charAt(7); // question number
+        
     checkbox.addEventListener('click', () => {
       if (checkbox.checked == true) {
-        if (question[num].classList.contains('hide')) {
-          setTimeout(scrollNext, 3000);
-          question[num].classList.remove('hide');
+        if (!question[num].classList.contains('show')) {
           question[num].classList.add('show', 'fade');
+          
+          setTimeout(() => {
+            scrollNext(question[num]);
+          }, 3000);
         }
       }
     });
@@ -226,7 +263,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
   const comment = document.getElementById('comment'), 
         charLimit = document.getElementById('char-limit');
-
 
   comment.addEventListener('input', (e) => {
     const elem = e.target,
