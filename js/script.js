@@ -153,13 +153,19 @@ window.addEventListener('DOMContentLoaded', () => {
       rangeValue.style.display = 'block';
       rangeValue.style.color = arrGradient[+range.value];
       sliderRange.style.background = 'linear-gradient(to right, #ba1417 0.59%, #cd0800 9.86%, #f45800 19.12%, #fd9113 27.87%, #ffb800 38.16%, #d7e317 48.45%, #d1e01f 60.8%, #eaf65e 71.61%, #00d086 81.9%, #00ab23 90.65%, #056719 99.4%)';
-    };
+    }
 
     range.addEventListener('input', () => {
       sliderRange.style.cssText = `
-        -webkit-mask: url('../img/thumb-line.svg') ${+range.value * 10}% 0/60px 26px, linear-gradient(to right, #fff calc(50% - 60px/2 + 1px), transparent 0 calc(50% + 60px/2 - 1px), #fff 0) right ${+range.value * 10}% top 21px/calc(200% - 60px) 4px;
+        -webkit-mask: url('../img/thumb-line.svg') ${+range.value * 10}% 0/60px 26px, 
+                      linear-gradient(to right, #fff calc(50% - 60px/2 + 1px), 
+                      transparent 0 calc(50% + 60px/2 - 1px), #fff 0) 
+                      right ${+range.value * 10}% top 21px/calc(200% - 60px) 4px;
         -webkit-mask-repeat: no-repeat;
-        mask: url('../img/thumb-line.svg') ${+range.value * 10}% 0/60px 26px, linear-gradient(to right, #fff calc(50% - 60px/2 + 1px), transparent 0 calc(50% + 60px/2 - 1px), #fff 0) right ${+range.value * 10}% top 21px/calc(200% - 60px) 4px;
+        mask: url('../img/thumb-line.svg') ${+range.value * 10}% 0/60px 26px, 
+              linear-gradient(to right, #fff calc(50% - 60px/2 + 1px), 
+              transparent 0 calc(50% + 60px/2 - 1px), #fff 0) 
+              right ${+range.value * 10}% top 21px/calc(200% - 60px) 4px;
         mask-repeat: no-repeat;
         `;
         
@@ -172,9 +178,8 @@ window.addEventListener('DOMContentLoaded', () => {
       rangeValue.textContent = range.value;
     });
     
-    const num = +answerName.charAt(7),
+    const num = +answerName.charAt(7),   //question number
           blockSubmit = document.getElementById('block-submit');
-     //question number
     
     range.addEventListener('click', () => {
       
@@ -201,21 +206,18 @@ window.addEventListener('DOMContentLoaded', () => {
           });
         }
         if (!question[num].classList.contains('show')) {
-          if (answerExtendedLike.classList.contains('show')) {
-            scrollNext(answerExtendedLike);
-            console.log(answerExtendedLike);
-          } else {
-            scrollNext(answerExtendedDisappointed);
-            console.log(answerExtendedDisappointed);
-          }
+          const answerEx = 
+            answerExtendedLike.classList.contains('show') ? 
+            answerExtendedLike : answerExtendedDisappointed;
+            scrollNext(answerEx);
           if (num == question.length-2) {
-            
             question[num].classList.add('show', 'fade');
             blockSubmit.classList.add('show', 'fade');
-            scrollNext(question[num]);
+            setTimeout(() => {
+              scrollNext(question[num]);
+            }, 500);
           }
         }
-        
       }
 
       if (question[question.length-2].classList.contains('show')) {
@@ -225,29 +227,42 @@ window.addEventListener('DOMContentLoaded', () => {
           question[question.length-1].classList.remove('show', 'fade');
         }
       }
-
     });
-
   });
 
   function checkValueRanges() {
     const arrValueRanges = [];
         ranges.forEach(item => {
           arrValueRanges.push(item.value);
-        })
+        });
         return arrValueRanges.some(item => item < 7);
   }
 
-  function scrollNext(elem, elem2 = 0) {
-    const elemHeight = elem.getBoundingClientRect().height;
+  function scrollNext(elem) {
+    let elemHeight = elem.getBoundingClientRect().height;  
+
     window.scrollBy({
-          top: elemHeight + elem2 + 20,
+          top: elemHeight + 20, 
           behavior: 'smooth'
         });
   }
 
+  window.addEventListener('scroll', () => {
+    if (timer) {
+      clearTimeout(timer);
+    }
+  });
   const answerCheckbox = document.querySelectorAll('.answer-checkbox');
   
+  function setTimeScroll(elem) {
+    timer = setTimeout(() => {
+      scrollNext(elem);
+    }, 3000);
+    return timer;
+  }
+
+  let timer;
+
   answerCheckbox.forEach(checkbox => {
     const num = checkbox.getAttribute('name').charAt(7); // question number
         
@@ -255,11 +270,8 @@ window.addEventListener('DOMContentLoaded', () => {
       if (checkbox.checked == true) {
         if (!question[num].classList.contains('show')) {
           question[num].classList.add('show', 'fade');
-          
-          setTimeout(() => {
-            scrollNext(question[num]);
-          }, 3000);
-        }
+            setTimeScroll (question[num]);
+        } 
       }
     });
   });

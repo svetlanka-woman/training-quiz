@@ -102,7 +102,7 @@
         </div>
       </div> <!--question 4-->
 
-      <div class="question question_comment" id="question_5">
+      <div class="question" id="question_comment">
         <div class="question__header">
           <div class="number"></div>
           <ul class="indicator"></ul>
@@ -117,9 +117,9 @@
             Ограничение количества символов в комментарии: <span id="char-limit">0 из 1000</span>
           </p>
         </div>
-      </div> <!--question 5-->
+      </div> <!--question comment-->
 
-      <div class="question" id="question_6">
+      <div class="question" id="question_connect">
         <div class="question__header">
           <div class="number"></div>
           <ul class="indicator"></ul>
@@ -129,9 +129,20 @@
             Можем ли мы связаться с Вами по номеру телефону для более
             подробного обсуждения Ваших ответов?
           </p>
-          <div class="question__answer"></div>
+          <div class="question__answer">
+            <ul class="connect_list_radio">
+                <li>
+                  <input type="radio" id="connect_yes" name="connect" value="yes">
+                  <label for="connect_yes">Да</label>
+                </li>
+                <li>
+                  <input type="radio" id="connect_no" name="connect" value="no">
+                  <label for="connect_no">Нет</label>
+                </li>
+            </ul>
+          </div>
         </div>
-      </div> <!--question 6-->
+      </div> <!--question_connect-->
 
       <div id="block-submit" class="hide">
         <input id="submit" type="submit" value="Отправить">

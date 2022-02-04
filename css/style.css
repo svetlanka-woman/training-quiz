@@ -249,6 +249,10 @@ ol[class] {
 }
 .answer-extended__list p {
   font-family: "Montserrat", serif;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   font-size: 10px;
   line-height: 14px;
   padding-top: 6px;
@@ -259,6 +263,7 @@ ol[class] {
   height: 100%;
   padding: 10px 5px 5px;
   background-color: #fff;
+  cursor: pointer;
 }
 .answer-extended__list input {
   position: absolute;
@@ -321,10 +326,10 @@ label[for="comment"] {
   background-position: 20px 0;
 }
 
-.question_comment .question__text {
+#question_comment .question__text {
   padding-bottom: 50px;
 }
-.question_comment .question__text span {
+#question_comment .question__text span {
   color: #E9041E;
 }
 
@@ -344,6 +349,91 @@ label[for="comment"] {
   font-family: "Montserrat", serif;
   font-size: 17px;
   letter-spacing: 0.02em;
+}
+
+#question_connect {
+  background-color: #F0F0F0;
+}
+
+.connect_list_radio {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+.connect_list_radio li {
+  text-align: center;
+  position: relative;
+}
+.connect_list_radio label {
+  display: block;
+  height: 42px;
+  width: 42px;
+  font-family: "Montserrat-Medium", serif;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  color: #000;
+  font-size: 12px;
+  line-height: 40px;
+  border: 1px solid #000;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.connect_list_radio input {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  opacity: 0;
+}
+.connect_list_radio input ~ label {
+  -webkit-transition: 0.4s all;
+  transition: 0.4s all;
+}
+.connect_list_radio input ~ label::after, .connect_list_radio input ~ label::before {
+  content: '';
+  display: block;
+  position: absolute;
+  background-size: contain;
+  background-repeat: no-repeat;
+  -webkit-transition: 0.4s all;
+  transition: 0.4s all;
+}
+.connect_list_radio input ~ label::after {
+  width: 0px;
+  height: 0px;
+  top: 21px;
+  left: 21px;
+  background-image: url(../img/connect-ellips-big.svg);
+}
+.connect_list_radio input ~ label::before {
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  top: 21px;
+  left: 21px;
+  background-image: url(../img/connect-ellips-small.svg);
+}
+.connect_list_radio input:checked ~ label {
+  background: #000;
+  color: #fff;
+}
+.connect_list_radio input:checked ~ label::after {
+  width: 148px;
+  height: 148px;
+  top: -54px;
+  left: -54px;
+}
+.connect_list_radio input:checked ~ label::before {
+  width: 62px;
+  height: 62px;
+  top: -10px;
+  left: -10px;
 }
 
 .hide {

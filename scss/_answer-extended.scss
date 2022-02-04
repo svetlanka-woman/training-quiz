@@ -25,6 +25,7 @@ justify-content: space-between;
   }
   & p {
     font-family: $fontRegular400;
+    user-select: none;
     font-size: 10px;
     line-height: 14px;
     padding-top: 6px;
@@ -35,7 +36,7 @@ justify-content: space-between;
     height: 100%;
     padding: 10px 5px 5px;
     background-color: #fff;
-    
+    cursor: pointer;
   }
   & input {
     position: absolute;
