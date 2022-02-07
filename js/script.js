@@ -15,6 +15,9 @@ window.addEventListener('DOMContentLoaded', () => {
     for (let k = 0; k < question.length-i-2; k++) {
       indicator[i].innerHTML += '<li></li>';
     }
+    if (i == question.length-1) {
+      indicator[i].insertAdjacentHTML('beforeend', '<li class="mark-last"></li>');
+    }
   }
 
   question.forEach((item, q) => {
@@ -178,20 +181,20 @@ window.addEventListener('DOMContentLoaded', () => {
       rangeValue.textContent = range.value;
     });
     
-    const num = +answerName.charAt(7),   //question number
+    const num = +answerName.charAt(7),  //question number
+          numberTotal = document.querySelectorAll('.number__total'), 
           blockSubmit = document.getElementById('block-submit');
     
     range.addEventListener('click', () => {
-      
       showColorRange();
       
       if (num == '1') {
         if (!question[num].classList.contains('show')) {
-          question[num].classList.add('show', 'fade');
+          question[num].classList.add('show', 'fade', 'padding-bottom');
           scrollNext(question[num]);
         }
       } else { 
-
+        question[num-1].classList.remove('padding-bottom');
         if (range.value > 6) {
           answerExtendedLike.classList.add('show', 'fade');
           answerExtendedDisappointed.classList.remove('show', 'fade');
@@ -215,16 +218,38 @@ window.addEventListener('DOMContentLoaded', () => {
             blockSubmit.classList.add('show', 'fade');
             setTimeout(() => {
               scrollNext(question[num]);
-            }, 500);
+            }, 300);
           }
         }
       }
 
-      if (question[question.length-2].classList.contains('show')) {
+      if (question[question.length - 2].classList.contains('show')) {
+        
         if (checkValueRanges()) {
-          question[question.length-1].classList.add('show', 'fade');
+          if (!question[question.length - 1].classList.contains('show')) {
+            for (let q = 0; q < question.length; q++) {
+              numberTotal[q].textContent = question.length;
+              if (q < question.length - 1) {
+                indicator[q].insertAdjacentHTML('beforeend', '<li class="last"></li>');
+              }
+            }
+            const markLast = document.querySelectorAll('.mark-last');
+            if (markLast.length == 2) {
+              markLast[0].remove();
+            }
+            question[question.length - 1].classList.add('show', 'fade');
+          }
         } else {
-          question[question.length-1].classList.remove('show', 'fade');
+          indicator[question.length - 2].insertAdjacentHTML('beforeend', '<li class="mark-last"></li>');
+          if (question[question.length - 1].classList.contains('show')) {
+            numberTotal.forEach(elem => {
+              elem.textContent = question.length - 1;
+            });
+            document.querySelectorAll('.last').forEach(elem => {
+              elem.remove();
+            });
+            question[question.length - 1].classList.remove('show', 'fade');
+          }
         }
       }
     });
@@ -247,21 +272,23 @@ window.addEventListener('DOMContentLoaded', () => {
         });
   }
 
+  let timer;
+
   window.addEventListener('scroll', () => {
     if (timer) {
       clearTimeout(timer);
     }
   });
-  const answerCheckbox = document.querySelectorAll('.answer-checkbox');
   
-  function setTimeScroll(elem) {
+  function setTimeScroll(elem, time) {
     timer = setTimeout(() => {
+      console.log(elem.getBoundingClientRect().height);
       scrollNext(elem);
-    }, 3000);
+    }, time);
     return timer;
   }
 
-  let timer;
+  const answerCheckbox = document.querySelectorAll('.answer-checkbox');
 
   answerCheckbox.forEach(checkbox => {
     const num = checkbox.getAttribute('name').charAt(7); // question number
@@ -269,8 +296,9 @@ window.addEventListener('DOMContentLoaded', () => {
     checkbox.addEventListener('click', () => {
       if (checkbox.checked == true) {
         if (!question[num].classList.contains('show')) {
-          question[num].classList.add('show', 'fade');
-            setTimeScroll (question[num]);
+          question[num].classList.add('show', 'fade', 'padding-bottom');
+          console.log(question[num].getBoundingClientRect().height);
+            setTimeScroll (question[num], 3000);
         } 
       }
     });

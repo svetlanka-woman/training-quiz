@@ -131,6 +131,15 @@ ol[class] {
 .indicator li.indicator_black {
   background-color: #000;
 }
+.indicator li.mark-last {
+  display: block;
+  width: 17px;
+  height: 15px;
+  background-color: transparent;
+  background-image: url(../img/mark-last-question.svg);
+  background-repeat: no-repeat;
+  margin: -7px 0px 0 10px;
+}
 
 .question {
   display: none;
@@ -246,13 +255,13 @@ ol[class] {
   text-align: center;
   position: relative;
   height: 110px;
-}
-.answer-extended__list p {
-  font-family: "Montserrat", serif;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+}
+.answer-extended__list p {
+  font-family: "Montserrat", serif;
   font-size: 10px;
   line-height: 14px;
   padding-top: 6px;
@@ -466,6 +475,14 @@ label[for="comment"] {
 }
 .show {
   display: block;
+}
+
+.margin-bottom {
+  margin-bottom: 60px;
+}
+
+.padding-bottom {
+  padding-bottom: 60px;
 }
 
 /*# sourceMappingURL=style.css.map */

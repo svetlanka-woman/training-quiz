@@ -22,10 +22,10 @@ justify-content: space-between;
     text-align: center;
     position: relative;
     height: 110px;
+    user-select: none;
   }
   & p {
     font-family: $fontRegular400;
-    user-select: none;
     font-size: 10px;
     line-height: 14px;
     padding-top: 6px;
