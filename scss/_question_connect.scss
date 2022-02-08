@@ -32,7 +32,7 @@
     & ~ label {
       transition: 0.4s all;
       &::after, &::before {
-        content: '';
+        content: "";
         display: block;
         position: absolute;
         background-size: contain;

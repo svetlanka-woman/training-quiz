@@ -224,7 +224,10 @@ window.addEventListener('DOMContentLoaded', () => {
       }
 
       if (question[question.length - 2].classList.contains('show')) {
-        
+        const markLast = document.querySelectorAll('.mark-last');
+            if (markLast.length == 2) {
+              markLast[0].remove();
+            }
         if (checkValueRanges()) {
           if (!question[question.length - 1].classList.contains('show')) {
             for (let q = 0; q < question.length; q++) {
@@ -232,10 +235,6 @@ window.addEventListener('DOMContentLoaded', () => {
               if (q < question.length - 1) {
                 indicator[q].insertAdjacentHTML('beforeend', '<li class="last"></li>');
               }
-            }
-            const markLast = document.querySelectorAll('.mark-last');
-            if (markLast.length == 2) {
-              markLast[0].remove();
             }
             question[question.length - 1].classList.add('show', 'fade');
           }
@@ -282,7 +281,6 @@ window.addEventListener('DOMContentLoaded', () => {
   
   function setTimeScroll(elem, time) {
     timer = setTimeout(() => {
-      console.log(elem.getBoundingClientRect().height);
       scrollNext(elem);
     }, time);
     return timer;
@@ -297,7 +295,6 @@ window.addEventListener('DOMContentLoaded', () => {
       if (checkbox.checked == true) {
         if (!question[num].classList.contains('show')) {
           question[num].classList.add('show', 'fade', 'padding-bottom');
-          console.log(question[num].getBoundingClientRect().height);
             setTimeScroll (question[num], 3000);
         } 
       }

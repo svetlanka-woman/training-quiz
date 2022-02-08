@@ -18,7 +18,7 @@
       </h1>
     </div> <!--.header-->
 
-    <form>
+    <form id="form">
       <div class="question" id="question_1">
         <div class="question__header">
           <div class="number"></div>
@@ -145,7 +145,9 @@
       </div> <!--question_connect-->
 
       <div id="block-submit" class="hide">
-        <input id="submit" type="submit" value="Отправить">
+        <div class="wrap-submit">
+          <button id="submit" type="submit" form="form" value="Submit">Отправить</button>
+        </div>
       </div>
     </form> <!--form-->
   </div> <!--.container-->
