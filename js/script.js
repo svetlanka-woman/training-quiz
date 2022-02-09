@@ -203,12 +203,12 @@ window.addEventListener('DOMContentLoaded', () => {
 
     range.addEventListener('input', () => {
       sliderRange.style.cssText = `
-        -webkit-mask: url('../img/thumb-line.svg') ${+range.value * 10}% 0/60px 26px, 
+        -webkit-mask: url('img/thumb-line.svg') ${+range.value * 10}% 0/60px 26px, 
                       linear-gradient(to right, #fff calc(50% - 60px/2 + 1px), 
                       transparent 0 calc(50% + 60px/2 - 1px), #fff 0) 
                       right ${+range.value * 10}% top 21px/calc(200% - 60px) 4px;
         -webkit-mask-repeat: no-repeat;
-        mask: url('../img/thumb-line.svg') ${+range.value * 10}% 0/60px 26px, 
+        mask: url('img/thumb-line.svg') ${+range.value * 10}% 0/60px 26px, 
               linear-gradient(to right, #fff calc(50% - 60px/2 + 1px), 
               transparent 0 calc(50% + 60px/2 - 1px), #fff 0) 
               right ${+range.value * 10}% top 21px/calc(200% - 60px) 4px;
