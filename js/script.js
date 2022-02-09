@@ -15,6 +15,7 @@ window.addEventListener('DOMContentLoaded', () => {
     for (let k = 0; k < question.length-i-2; k++) {
       indicator[i].innerHTML += '<li></li>';
     }
+    // adding question_connect last question mark
     if (i == question.length-1) {
       indicator[i].insertAdjacentHTML('beforeend', '<li class="mark-last"></li>');
     }
@@ -137,6 +138,48 @@ window.addEventListener('DOMContentLoaded', () => {
     });
   }
   renderAnswerExtended();
+  
+  function toggleAnswerExtended(showElem, hideElem, hideCheckbox) {
+    showElem.classList.add('show', 'fade');
+    hideElem.classList.remove('show', 'fade');
+    hideCheckbox.forEach(checkbox => {
+      checkbox.checked = false;
+    });
+    const message = hideElem.lastElementChild; 
+    if (message.classList.contains('message')) {
+      message.remove();
+    }
+  }
+
+  const numberTotal = document.querySelectorAll('.number__total'), 
+        blockSubmit = document.getElementById('block-submit');
+
+  function reRenderQuestionHeader() {
+    const markLast = document.querySelectorAll('.mark-last');
+    if (markLast.length == 2) {
+      markLast[0].remove();
+    }
+    if (checkingValueRanges()) {
+      if (!question[question.length - 1].classList.contains('show')) {
+        numberTotal.forEach((elem, q) => {
+          elem.textContent = question.length;
+          if (q < question.length - 1) {
+            indicator[q].insertAdjacentHTML('beforeend', '<li class="last"></li>');
+          }
+        });
+      }
+    } else {
+      indicator[question.length - 2].insertAdjacentHTML('beforeend', '<li class="mark-last"></li>');
+      if (question[question.length - 1].classList.contains('show')) {
+        numberTotal.forEach(elem => {
+          elem.textContent = question.length - 1;
+        });
+        document.querySelectorAll('.last').forEach(elem => {
+          elem.remove();
+        });
+      }
+    }
+  }
 
   const ranges = document.querySelectorAll('.range');
   const arrGradient = ['#ba1417','#cd0800','#f45800','#fd9113', '#ffb800', '#d7e317', '#d1e01f', '#d1e01f', '#79E371', '#00ab23', '#00ab23'];
@@ -180,40 +223,34 @@ window.addEventListener('DOMContentLoaded', () => {
       showColorRange();
       rangeValue.textContent = range.value;
     });
-    
-    const num = +answerName.charAt(7),  //question number
-          numberTotal = document.querySelectorAll('.number__total'), 
-          blockSubmit = document.getElementById('block-submit');
+        
+    const num = +answerName.charAt(7);  //question number
     
     range.addEventListener('click', () => {
       showColorRange();
       
-      if (num == '1') {
+      if (num == '1') {   // show second question
         if (!question[num].classList.contains('show')) {
           question[num].classList.add('show', 'fade', 'padding-bottom');
           scrollNext(question[num]);
         }
       } else { 
         question[num-1].classList.remove('padding-bottom');
-        if (range.value > 6) {
-          answerExtendedLike.classList.add('show', 'fade');
-          answerExtendedDisappointed.classList.remove('show', 'fade');
-          checkboxDisappointed.forEach(checkbox => {
-            checkbox.checked = false;
-          });
+        
+        // show answers extended
+        if (range.value > 6) { 
+          toggleAnswerExtended(answerExtendedLike, answerExtendedDisappointed, checkboxDisappointed);
         } else {
-          answerExtendedDisappointed.classList.add('show', 'fade');
-          answerExtendedLike.classList.remove('show', 'fade');
-          checkboxLike.forEach(checkbox => {
-            checkbox.checked = false;
-          });
+          toggleAnswerExtended(answerExtendedDisappointed, answerExtendedLike, checkboxLike);
         }
+
         if (!question[num].classList.contains('show')) {
           const answerEx = 
             answerExtendedLike.classList.contains('show') ? 
             answerExtendedLike : answerExtendedDisappointed;
-            scrollNext(answerEx);
-          if (num == question.length-2) {
+          scrollNext(answerEx);
+          if (num == question.length-2) { 
+            // show question_comment and button-submit
             question[num].classList.add('show', 'fade');
             blockSubmit.classList.add('show', 'fade');
             setTimeout(() => {
@@ -224,37 +261,20 @@ window.addEventListener('DOMContentLoaded', () => {
       }
 
       if (question[question.length - 2].classList.contains('show')) {
-        const markLast = document.querySelectorAll('.mark-last');
-            if (markLast.length == 2) {
-              markLast[0].remove();
-            }
-        if (checkValueRanges()) {
-          if (!question[question.length - 1].classList.contains('show')) {
-            for (let q = 0; q < question.length; q++) {
-              numberTotal[q].textContent = question.length;
-              if (q < question.length - 1) {
-                indicator[q].insertAdjacentHTML('beforeend', '<li class="last"></li>');
-              }
-            }
-            question[question.length - 1].classList.add('show', 'fade');
-          }
+        reRenderQuestionHeader();
+        if (checkingValueRanges()) { 
+          //show question_connect
+          question[question.length - 1].classList.add('show', 'fade');
         } else {
-          indicator[question.length - 2].insertAdjacentHTML('beforeend', '<li class="mark-last"></li>');
-          if (question[question.length - 1].classList.contains('show')) {
-            numberTotal.forEach(elem => {
-              elem.textContent = question.length - 1;
-            });
-            document.querySelectorAll('.last').forEach(elem => {
-              elem.remove();
-            });
-            question[question.length - 1].classList.remove('show', 'fade');
-          }
+          //hide question_connect
+          question[question.length - 1].classList.remove('show', 'fade');
+    
         }
       }
     });
   });
 
-  function checkValueRanges() {
+  function checkingValueRanges() {
     const arrValueRanges = [];
         ranges.forEach(item => {
           arrValueRanges.push(item.value);
@@ -266,9 +286,9 @@ window.addEventListener('DOMContentLoaded', () => {
     let elemHeight = elem.getBoundingClientRect().height;  
 
     window.scrollBy({
-          top: elemHeight + 20, 
-          behavior: 'smooth'
-        });
+      top: elemHeight + 20, 
+      behavior: 'smooth'
+    });
   }
 
   let timer;
@@ -295,16 +315,20 @@ window.addEventListener('DOMContentLoaded', () => {
       if (checkbox.checked == true) {
         if (!question[num].classList.contains('show')) {
           question[num].classList.add('show', 'fade', 'padding-bottom');
-            setTimeScroll (question[num], 3000);
-        } 
+            setTimeScroll(question[num], 3000);
+        }
+        const message = checkbox.parentElement.parentElement.nextElementSibling; 
+        if (message) {
+          message.remove();
+        }
       }
     });
   });
 
-  const comment = document.getElementById('comment'), 
+  const textareaComment = document.getElementById('comment'), 
         charLimit = document.getElementById('char-limit');
 
-  comment.addEventListener('input', (e) => {
+  textareaComment.addEventListener('input', (e) => {
     const elem = e.target,
           currentLength = elem.value.length,
           maxLength = elem.getAttribute('maxlength');
@@ -313,6 +337,61 @@ window.addEventListener('DOMContentLoaded', () => {
           
     elem.style.cssText = 'height: auto;';
     elem.style.cssText = 'height:' + elem.scrollHeight + 'px';
+  });
+
+  
+  function scrollToElem(elem) {
+    let elemTop = elem.getBoundingClientRect().top,
+        scrollTop = window.pageYOffset || document.documentElement.scrollTop;  
+
+    window.scrollTo({
+      top: elemTop + scrollTop, 
+      behavior: 'smooth'
+    });
+  }
+
+  const answerExtended = document.querySelectorAll('.answer-extended');
+
+  function verifCheckedCheckbox() {
+    answerExtended.forEach((item) => {
+      if (item.classList.contains('show')) {
+        const checkbox = item.querySelectorAll('.answer-checkbox');
+        let checkedSome = false;
+
+        checkbox.forEach(box => {
+          if (box.checked) {
+            checkedSome = true;
+          }
+        });
+
+        if (!checkedSome && !item.querySelector('.message')) {
+          const message = document.createElement('div');
+          message.classList.add('message');
+          message.textContent = `Выберите, пожалуста, причину предыдущей оценки`;
+          item.append(message);
+        }
+      }
+    });
+  }
+
+  const form = document.getElementById('form'),
+        header = document.querySelector('.header'),
+        afterSubmitBlock = document.querySelector('.after-submit');
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    verifCheckedCheckbox();
+    const message = document.querySelectorAll('.message');
+    if (message[0]) {
+      scrollToElem(message[0].parentElement.parentElement.parentElement);
+    } else {
+      const formData = new FormData(form);
+      const jsonData = JSON.stringify(Object.fromEntries(formData.entries()));
+      
+      header.classList.add('hide');
+      form.classList.add('hide');
+      afterSubmitBlock.classList.add('show', 'fade');
+    }
   });
 
 });

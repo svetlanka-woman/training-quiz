@@ -46,6 +46,14 @@ ol[class] {
   font-style: normal;
   font-display: swap;
 }
+@font-face {
+  font-family: 'Montserrat-BoldItalic';
+  src: url("../fonts/Montserrat-BoldItalic.eot");
+  src: local("Montserrat Bold Italic"), local("Montserrat-BoldItalic"), url("../fonts/Montserrat-BoldItalic.eot?#iefix") format("embedded-opentype"), url("../fonts/Montserrat-BoldItalic.woff2") format("woff2"), url("../fonts/Montserrat-BoldItalic.woff") format("woff"), url("../fonts/Montserrat-BoldItalic.ttf") format("truetype"), url("../fonts/Montserrat-BoldItalic.svg#Montserrat-BoldItalic") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 .body {
   background-color: #fff;
 }
@@ -53,10 +61,6 @@ ol[class] {
 .container {
   max-width: 375px;
   margin: 0 auto;
-}
-
-.main {
-  background-color: #fff;
 }
 
 .header {
@@ -306,6 +310,13 @@ ol[class] {
   display: none;
 }
 
+.message {
+  color: #E9041E;
+  font-size: 10px;
+  font-family: "Montserrat-BoldItalic", serif;
+  margin: 10px 0 25px 0;
+}
+
 #block-submit {
   background-color: #F0F0F0;
   padding: 50px 0;
@@ -320,7 +331,7 @@ ol[class] {
   display: block;
   position: relative;
 }
-.wrap-submit::after, .wrap-submit::before {
+.wrap-submit::after {
   content: "";
   width: 100%;
   height: 100%;
@@ -330,30 +341,14 @@ ol[class] {
   top: 0;
   left: 0;
   z-index: 1;
-}
-.wrap-submit::after {
-  background: -webkit-gradient(linear, left top, right top, color-stop(100%, #E9041E), color-stop(0%, transparent));
-  background: linear-gradient(to right, #E9041E 100%, transparent 0%);
+  background: linear-gradient(-45deg, transparent 42px, #E9041E 0);
   background-size: 0;
-  background-position: -41px 0;
   -webkit-transition: background-size 0.8s;
   transition: background-size 0.8s;
   background-repeat: no-repeat;
 }
-.wrap-submit::before {
-  background: -webkit-gradient(linear, left top, right bottom, color-stop(50%, #E9041E), color-stop(52%, transparent));
-  background: linear-gradient(to bottom right, #E9041E 50%, transparent 52%);
-  background-size: 42px;
-  background-position: -42px 0;
-  -webkit-transition: background-position 0.8s;
-  transition: background-position 0.8s;
-  background-repeat: no-repeat;
-}
 .wrap-submit:hover::after {
-  background-size: 202px;
-}
-.wrap-submit:hover::before {
-  background-position: 160px 0;
+  background-size: 130%;
 }
 
 #submit {
@@ -497,6 +492,56 @@ label[for="comment"] {
   left: -10px;
 }
 
+.after-submit {
+  display: none;
+}
+
+.after-submit__logo {
+  width: 187px;
+  height: 24px;
+  margin: 20px;
+}
+
+.after-submit__body {
+  margin: 0 auto;
+  margin-top: 15vh;
+  border: 4px solid #EC233A;
+  width: 322px;
+  height: 322px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 17px;
+}
+
+.after-submit__title {
+  font-size: 30px;
+  font-family: 'Arial', serif;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.after-submit__title::after {
+  content: "";
+  width: 198px;
+  height: 4px;
+  background-color: black;
+  display: block;
+  margin-left: 30%;
+}
+
+.after-submit__text {
+  margin-top: 30px;
+  font-size: 18px;
+  font-family: 'Arial', serif;
+}
+
 .hide {
   display: none;
 }
@@ -529,12 +574,8 @@ label[for="comment"] {
   display: block;
 }
 
-.margin-bottom {
-  margin-bottom: 60px;
-}
-
 .padding-bottom {
-  padding-bottom: 60px;
+  padding-bottom: 80px;
 }
 
 /*# sourceMappingURL=style.css.map */

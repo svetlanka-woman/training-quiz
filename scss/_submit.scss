@@ -1,7 +1,6 @@
 #block-submit {
   background-color: $bgGrey;
   padding: 50px 0;
-  // display: block;
   z-index: 3;
 }
 
@@ -13,7 +12,7 @@
   display: block;
   position: relative;
 
-  &::after, &::before {
+  &::after {
     content: "";
     width: 100%;
     height: 100%;
@@ -23,29 +22,14 @@
     top: 0;
     left: 0;
     z-index: 1;
-  }
-
-  &::after {
-    background: linear-gradient(to right, #E9041E 100%, transparent 0%);
+    background: linear-gradient(-45deg, transparent 42px, #E9041E 0);
     background-size: 0;
-    background-position: -41px 0;
     transition: background-size 0.8s;
-    background-repeat: no-repeat;
-  } 
-  
-  &::before {
-    background: linear-gradient(to bottom right, #E9041E 50%, transparent 52%);
-    background-size: 42px;
-    background-position: -42px 0;
-    transition: background-position 0.8s;
     background-repeat: no-repeat;
   }
 
   &:hover::after {
-    background-size: 202px;
-  }
-  &:hover::before {
-    background-position: 160px 0;
+    background-size: 130%;
   }
 }
 
@@ -68,3 +52,4 @@
     color: $colorWhite;
   }
 }
+

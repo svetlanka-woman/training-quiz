@@ -25,16 +25,13 @@ ol[class] {
   margin: 0 auto;
 }
 
-.main {
-  background-color: $colorWhite;
-}
-
 @import '_header.scss';
 @import '_question__header.scss';
 @import '_question__body.scss';
 @import '_submit.scss';
-@import '_question_comment';
-@import '_question_connect';
+@import '_question_comment.scss';
+@import '_question_connect.scss';
+@import '_after-submit.scss';
 
 
 .hide {
@@ -54,10 +51,6 @@ ol[class] {
   display: block;
 }
 
-.margin-bottom {
-  margin-bottom: 60px;
-}
-
 .padding-bottom {
-  padding-bottom: 60px;
+  padding-bottom: 80px;
 }
