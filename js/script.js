@@ -225,8 +225,8 @@ window.addEventListener('DOMContentLoaded', () => {
     });
         
     const num = +answerName.charAt(7);  //question number
-    
-    range.addEventListener('click', () => {
+
+    function showNextElement() {
       showColorRange();
       
       if (num == '1') {   // show second question
@@ -268,10 +268,14 @@ window.addEventListener('DOMContentLoaded', () => {
         } else {
           //hide question_connect
           question[question.length - 1].classList.remove('show', 'fade');
-    
         }
       }
-    });
+    }
+
+    range.addEventListener('touchend', showNextElement);
+
+    range.addEventListener('click', showNextElement);
+
   });
 
   function checkingValueRanges() {
