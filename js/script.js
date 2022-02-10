@@ -54,7 +54,7 @@ window.addEventListener('DOMContentLoaded', () => {
       alt: ['Поиск', 'Фразы', 'Скрытый'], 
       pDisap: [
         'Сложно найти информацию', 
-        'Непонятные формулировки', 
+        'Непонятные формули&shy;ровки', 
         'Есть скрытые условия'
       ],
       pLike: [
@@ -77,7 +77,7 @@ window.addEventListener('DOMContentLoaded', () => {
       ],
       pLike: [
         'Подробная информация об условиях обслуживания',
-        'Исчерпывающая информация по Priority Pass', 
+        'Исчерпываю&shy;щая информация по Priority Pass', 
         'Детальная информация по программе #МожноВсё',
         'Подробная информация о курсах обмена',
         'Подробная информация о персональном менеджере', 
@@ -216,9 +216,26 @@ window.addEventListener('DOMContentLoaded', () => {
         `;
         
       if (range.value == 0 && rangeValue.textContent == 1) {
-        rangeValue.style.left = '7.5%';
+        if (rangeValue.parentElement.parentElement.clientWidth <= 350) { //if screen size <= 350px
+          rangeValue.style.left = '8.5%';
+        } else { 
+          rangeValue.style.left = '7.5%';
+        }
       } else {
-        rangeValue.style.left = (+range.value + 1) * 8.1 + '%';
+        if (rangeValue.parentElement.parentElement.clientWidth <= 350) { //if screen size <= 350px
+          switch (range.value) {
+            case '1': 
+              rangeValue.style.left = '17%';
+              break;
+            case '10': 
+              rangeValue.style.left = '87%';
+              break;
+            default:
+              rangeValue.style.left = (+range.value + 1) * 8.1 + '%';
+          }
+        } else {
+          rangeValue.style.left = (+range.value + 1) * 8.1 + '%';
+        }
       }
       showColorRange();
       rangeValue.textContent = range.value;

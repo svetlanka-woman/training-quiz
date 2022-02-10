@@ -221,6 +221,11 @@ ol[class] {
           mask-repeat: no-repeat;
 }
 
+@media (max-width: 370px) {
+  .wrap_range {
+    background-size: 81%;
+  }
+}
 .answer-extended {
   background-color: #F0F0F0;
   padding: 20px 0px 2px 18px;
@@ -311,6 +316,24 @@ ol[class] {
   margin: 10px 0 25px 0;
 }
 
+@media (max-width: 370px) {
+  .answer-extended__list li {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 1 28.5%;
+            flex: 0 1 28.5%;
+    margin-right: 12px;
+  }
+}
+@media (max-width: 340px) {
+  .answer-extended__list li {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 1 28%;
+            flex: 0 1 28%;
+  }
+  .answer-extended__list label {
+    padding: 10px 2px 5px;
+  }
+}
 #block-submit {
   background-color: #F0F0F0;
   padding: 50px 0;
