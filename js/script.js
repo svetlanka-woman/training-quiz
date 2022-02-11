@@ -15,7 +15,7 @@ window.addEventListener('DOMContentLoaded', () => {
     for (let k = 0; k < question.length-i-2; k++) {
       indicator[i].innerHTML += '<li></li>';
     }
-    // adding question_connect last question mark
+    // adding last question mark for question_connect
     if (i == question.length-1) {
       indicator[i].insertAdjacentHTML('beforeend', '<li class="mark-last"></li>');
     }
@@ -155,22 +155,24 @@ window.addEventListener('DOMContentLoaded', () => {
         blockSubmit = document.getElementById('block-submit');
 
   function reRenderQuestionHeader() {
-    const markLast = document.querySelectorAll('.mark-last');
-    if (markLast.length == 2) {
-      markLast[0].remove();
-    }
+    const indicatorComment = indicator[question.length - 2],
+          lastLiIndicatorComment = indicatorComment.lastElementChild;
+
     if (checkingValueRanges()) {
-      if (!question[question.length - 1].classList.contains('show')) {
+      if (indicator[0].children.length !== question.length) {
         numberTotal.forEach((elem, q) => {
           elem.textContent = question.length;
           if (q < question.length - 1) {
             indicator[q].insertAdjacentHTML('beforeend', '<li class="last"></li>');
           }
+          if (lastLiIndicatorComment.classList.contains('mark-last')) {
+            lastLiIndicatorComment.remove();
+          }
         });
       }
     } else {
-      indicator[question.length - 2].insertAdjacentHTML('beforeend', '<li class="mark-last"></li>');
-      if (question[question.length - 1].classList.contains('show')) {
+      if (!lastLiIndicatorComment.classList.contains('mark-last')) {
+        indicatorComment.insertAdjacentHTML('beforeend', '<li class="mark-last"></li>');
         numberTotal.forEach(elem => {
           elem.textContent = question.length - 1;
         });
@@ -181,8 +183,22 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  const ranges = document.querySelectorAll('.range');
-  const arrGradient = ['#ba1417','#cd0800','#f45800','#fd9113', '#ffb800', '#d7e317', '#d1e01f', '#d1e01f', '#79E371', '#00ab23', '#00ab23'];
+  function checkingValueRanges() {
+    const arrValueRanges = [];
+
+    ranges.forEach((item, i) => {
+      const rangeValue = item.nextElementSibling;
+
+      if (rangeValue.style.display == 'block') {
+        arrValueRanges.push(item.value);
+      }
+    });
+    return arrValueRanges.some(item => item < 7);
+  }
+
+  const ranges = document.querySelectorAll('.range'),
+        container = document.querySelector('.container'),
+        arrGradient = ['#ba1417','#cd0800','#f45800','#fd9113', '#ffb800', '#d7e317', '#d1e01f', '#d1e01f', '#79E371', '#00ab23', '#00ab23'];
 
   ranges.forEach(range => {
     const rangeValue = range.nextElementSibling,
@@ -216,13 +232,13 @@ window.addEventListener('DOMContentLoaded', () => {
         `;
         
       if (range.value == 0 && rangeValue.textContent == 1) {
-        if (rangeValue.parentElement.parentElement.clientWidth <= 350) { //if screen size <= 350px
+        if (container.clientWidth <= 350) { //if screen size <= 350px
           rangeValue.style.left = '8.5%';
         } else { 
           rangeValue.style.left = '7.5%';
         }
       } else {
-        if (rangeValue.parentElement.parentElement.clientWidth <= 350) { //if screen size <= 350px
+        if (container.clientWidth <= 350) { //if screen size <= 350px
           switch (range.value) {
             case '1': 
               rangeValue.style.left = '17%';
@@ -245,6 +261,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     function showNextElement() {
       showColorRange();
+      reRenderQuestionHeader();
       
       if (num == '1') {   // show second question
         if (!question[num].classList.contains('show')) {
@@ -278,7 +295,7 @@ window.addEventListener('DOMContentLoaded', () => {
       }
 
       if (question[question.length - 2].classList.contains('show')) {
-        reRenderQuestionHeader();
+        // reRenderQuestionHeader();
         if (checkingValueRanges()) { 
           //show question_connect
           question[question.length - 1].classList.add('show', 'fade');
@@ -294,14 +311,6 @@ window.addEventListener('DOMContentLoaded', () => {
     range.addEventListener('click', showNextElement);
 
   });
-
-  function checkingValueRanges() {
-    const arrValueRanges = [];
-        ranges.forEach(item => {
-          arrValueRanges.push(item.value);
-        });
-        return arrValueRanges.some(item => item < 7);
-  }
 
   function scrollNext(elem) {
     let elemHeight = elem.getBoundingClientRect().height;  
