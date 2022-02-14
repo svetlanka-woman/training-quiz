@@ -217,7 +217,7 @@ window.addEventListener('DOMContentLoaded', () => {
       sliderRange.style.background = 'linear-gradient(to right, #ba1417 0.59%, #cd0800 9.86%, #f45800 19.12%, #fd9113 27.87%, #ffb800 38.16%, #d7e317 48.45%, #d1e01f 60.8%, #eaf65e 71.61%, #00d086 81.9%, #00ab23 90.65%, #056719 99.4%)';
     }
 
-    range.addEventListener('input', () => {
+    function movingSliderRange() {
       sliderRange.style.cssText = `
         -webkit-mask: url('img/thumb-line.svg') ${+range.value * 10}% 0/60px 26px, 
                       linear-gradient(to right, #fff calc(50% - 60px/2 + 1px), 
@@ -230,29 +230,55 @@ window.addEventListener('DOMContentLoaded', () => {
               right ${+range.value * 10}% top 21px/calc(200% - 60px) 4px;
         mask-repeat: no-repeat;
         `;
-        
-      if (range.value == 0 && rangeValue.textContent == 1) {
-        if (container.clientWidth <= 350) { //if screen size <= 350px
-          rangeValue.style.left = '8.5%';
-        } else { 
-          rangeValue.style.left = '7.5%';
-        }
+    }
+
+    range.addEventListener('input', () => {
+      movingSliderRange();
+
+
+      // rangeValue.style.left = `${+range.value*9.3}%`;
+      if (container.clientWidth <= 480) { //if screen size <= 470px
+        rangeValue.style.left = `${+range.value*9.2}%`;
       } else {
-        if (container.clientWidth <= 350) { //if screen size <= 350px
-          switch (range.value) {
-            case '1': 
-              rangeValue.style.left = '17%';
-              break;
-            case '10': 
-              rangeValue.style.left = '87%';
-              break;
-            default:
-              rangeValue.style.left = (+range.value + 1) * 8.1 + '%';
-          }
-        } else {
-          rangeValue.style.left = (+range.value + 1) * 8.1 + '%';
-        }
+        rangeValue.style.left = `${+range.value*9.3}%`;
       }
+      if (container.clientWidth <= 420) {
+        rangeValue.style.left = `${+range.value*9.1}%`;
+      } 
+      if (container.clientWidth <= 380) {
+        rangeValue.style.left = `${+range.value*9.0}%`;
+      } 
+      if (container.clientWidth <= 350) {
+        rangeValue.style.left = `${+range.value*8.9}%`;
+      } 
+      
+      
+      // rangeValue.style.marginLeft = `${+range.value*9.09}%`;
+      // rangeValue.style.width = `${60 - +range.value*3.62}px`;
+      // rangeValue.style.left = `calc(${+range.value}*26px + ${+range.value}*(9.09% - 26px))`;
+        
+      // if (range.value == 0 && rangeValue.textContent == 1) {
+      //   if (container.clientWidth <= 350) { //if screen size <= 350px
+      //     rangeValue.style.left = '8.5%';
+      //   } else { 
+      //     rangeValue.style.left = '7.5%';
+      //   }
+      // } else {
+      //   if (container.clientWidth <= 350) { //if screen size <= 350px
+      //     switch (range.value) {
+      //       case '1': 
+      //         rangeValue.style.left = '17%';
+      //         break;
+      //       case '10': 
+      //         rangeValue.style.left = '87%';
+      //         break;
+      //       default:
+      //         rangeValue.style.left = (+range.value + 1) * 8.1 + '%';
+      //     }
+      //   } else {
+      //     rangeValue.style.left = (+range.value + 1) * 8.1 + '%';
+      //   }
+      // }
       showColorRange();
       rangeValue.textContent = range.value;
     });

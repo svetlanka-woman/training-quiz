@@ -3,6 +3,7 @@
   height: 60px;
   display: flex;
   align-items: center;
+  padding: 0 18px;
 }
 
 .number {
@@ -10,8 +11,8 @@
   font-family: $fontBold700;
   font-size: 16px;
   margin-right: 8px;
-  margin-left: 14px;
   letter-spacing: -2px;
+  flex: 0 0 auto;
 }
 
 .number__total {
@@ -20,11 +21,10 @@
 
 .indicator {
   display: flex;
-  width: 83%;
+  flex: 1 1 auto;
   
   li {
     flex: 1 1 auto;
-    width: 50px;
     height: 2px;
     background-color: #C4C4C4;
     margin-left: 3px;
@@ -34,7 +34,7 @@
     }
 
     &.mark-last {
-      display: block;
+      flex: 0 0 auto;
       width: 17px;
       height: 15px;
       background-color: transparent;
@@ -43,4 +43,11 @@
       margin: -7px 0px 0 10px;
     }
   }
+}
+
+
+@media (max-width: 450px) {
+  .question__header {
+    padding: 0 14px;
+}
 }

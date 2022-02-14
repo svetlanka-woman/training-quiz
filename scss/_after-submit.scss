@@ -41,3 +41,14 @@
   font-size: 18px;
   font-family: 'Arial', serif;
 }
+
+@media (max-width: 370px) {
+  .after-submit__body {
+    width: 300px;
+  }
+  .after-submit__title {
+    &::after {
+      margin-left: 25%;
+    }
+  }
+}

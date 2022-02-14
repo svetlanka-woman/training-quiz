@@ -1,17 +1,19 @@
 #question_connect {
   background-color: $bgGrey;
+  .question__text {
+    padding-bottom: 45px;
+  }
 }
 
 .connect_list_radio {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
-  & li {
+  li {
     text-align: center;
     position: relative;
   }
-  
-  & label {
+  label {
     display: block;
     height: 42px;
     width: 42px;
@@ -24,12 +26,12 @@
     border-radius: 50%;
     cursor: pointer;
   }
-  & input {
+  input {
     position: absolute;
     top: 10px;
     left: 10px;
     opacity: 0;
-    & ~ label {
+    ~ label {
       transition: 0.4s all;
       &::after, &::before {
         content: "";

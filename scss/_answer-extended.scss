@@ -13,43 +13,44 @@ justify-content: space-between;
 
 .answer-extended__list {
   margin-top: 22px;
+  margin-right: -35px;
   display: flex;
   flex-wrap: wrap;
-  & li {
-    flex: 0 1 29%;
-    margin-right: 15px;
-    margin-bottom: 15px;
+  li {
+    flex: 0 1 25%;
+    margin-right: 7%;
+    margin-bottom: 20px;
     text-align: center;
     position: relative;
     height: 110px;
     user-select: none;
   }
-  & p {
+  p {
     font-family: $fontRegular400;
     font-size: 10px;
     line-height: 14px;
     padding-top: 6px;
   }
-  & label {
+  label {
     display: block;
     width: 100%;
     height: 100%;
-    padding: 10px 5px 5px;
+    padding: 10px 15px 5px;
     background-color: #fff;
     cursor: pointer;
   }
-  & input {
+  input {
     position: absolute;
     top: 0;
     left: 0;
     opacity: 0;
-    & ~ label {
+    ~ label {
       transition: 0.55s transform;
-      & img {
+      img {
         display: block;
         margin: 0 auto;
       }
-      & .img-white {
+      .img-white {
         display: none;
       }
     }
@@ -57,10 +58,10 @@ justify-content: space-between;
       transform: rotateY(360deg);
       background: $colorRed;
       color: $colorWhite;
-      & .img-white {
+      .img-white {
         display: block;
       }
-      & .img-colors {
+      .img-colors {
         display: none;
       }
     }
@@ -74,9 +75,41 @@ justify-content: space-between;
   margin: 10px 0 25px 0;
 }
 
+@media (max-width: 480px) {
+  .answer-extended__list {
+    label {
+      padding: 10px 5px 5px;
+    }
+  }
+}
+
+@media (max-width: 450px) {
+  .answer-extended__list {
+    li {
+      flex: 0 1 26%;
+      margin-right: 5%;
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  .answer-extended__list {
+    margin-right: -1px;
+    li {
+    flex: 0 1 29%;
+    margin-right: 14px;
+    margin-bottom: 15px;
+    }
+    label {
+      padding: 10px 5px 5px;
+    }
+  }
+}
+
 @media (max-width: 370px) {
   .answer-extended__list {
-    & li {
+    margin-right: -10px;
+    li {
     flex: 0 1 28.5%;
     margin-right: 12px;
     }
@@ -85,10 +118,10 @@ justify-content: space-between;
 
 @media (max-width: 340px) {
   .answer-extended__list {
-    & li {
+    li {
     flex: 0 1 28%;
     }
-    & label {
+    label {
       padding: 10px 2px 5px;
     }
   }

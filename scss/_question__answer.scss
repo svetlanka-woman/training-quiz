@@ -3,13 +3,13 @@
 }
 
 .wrap_range {
-  width: 100%;
-  padding: 6px 17px;
-  margin-top: -18px;
+  padding: 10px 0px;
+  margin: 0 14px;
+  margin-top: -22px;
   position: relative;
   background-image: url(../img/scale.svg);
   background-repeat: no-repeat;
-  background-size: 83%;
+  background-size: 95%;
   background-position: center 1px;
 }
 
@@ -27,15 +27,21 @@
     width: 26px;
     height: 33px;
     border: 0;
+    border: 3px solid #fff;
+    border-radius: 45%;
     opacity: 1;
     background: url('../img/grade_thumb.svg');
     cursor: pointer;
+    box-sizing: content-box;
+
   }
 
   &::-moz-range-thumb {
     width: 26px;
     height: 33px;
-    border: 0;
+    border: 3px solid #fff;
+    border-radius: 45%;
+    opacity: 1;
     background: url('../img/grade_thumb.svg');
     cursor: pointer;
   }
@@ -43,8 +49,10 @@
 
 .range_value {
   position: absolute;
-  top: -32px;
-  left: 25px;
+  width: 32px;
+  text-align: center;
+  top: -28px;
+  left: 0;
   font-family: $fontMedium500;
   font-size: 16px;
   display: none;
@@ -59,8 +67,20 @@
   mask-repeat: no-repeat;
 }
 
-@media (max-width: 370px) {
+@media (max-width: 450px) {
   .wrap_range {
-    background-size: 81%;
+    background-size: 93%;
+  }
+}
+
+@media (max-width: 400px) {
+  .wrap_range {
+    background-size: 91%;
+  }
+}
+
+@media (max-width: 320px) {
+  .wrap_range {
+    background-size: 89%;
   }
 }
