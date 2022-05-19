@@ -44,7 +44,7 @@ window.addEventListener('DOMContentLoaded', () => {
         'Удобство подачи заявки',
         'Не требуется много документов', 
         'Быстрое оформления',
-        'Удобоное получение продукта',
+        'Удобное получение продукта',
         'Желание сотрудника помочь'
       ]
     },
@@ -235,8 +235,6 @@ window.addEventListener('DOMContentLoaded', () => {
     range.addEventListener('input', () => {
       movingSliderRange();
 
-
-      // rangeValue.style.left = `${+range.value*9.3}%`;
       if (container.clientWidth <= 480) { //if screen size <= 470px
         rangeValue.style.left = `${+range.value*9.2}%`;
       } else {
@@ -252,33 +250,6 @@ window.addEventListener('DOMContentLoaded', () => {
         rangeValue.style.left = `${+range.value*8.9}%`;
       } 
       
-      
-      // rangeValue.style.marginLeft = `${+range.value*9.09}%`;
-      // rangeValue.style.width = `${60 - +range.value*3.62}px`;
-      // rangeValue.style.left = `calc(${+range.value}*26px + ${+range.value}*(9.09% - 26px))`;
-        
-      // if (range.value == 0 && rangeValue.textContent == 1) {
-      //   if (container.clientWidth <= 350) { //if screen size <= 350px
-      //     rangeValue.style.left = '8.5%';
-      //   } else { 
-      //     rangeValue.style.left = '7.5%';
-      //   }
-      // } else {
-      //   if (container.clientWidth <= 350) { //if screen size <= 350px
-      //     switch (range.value) {
-      //       case '1': 
-      //         rangeValue.style.left = '17%';
-      //         break;
-      //       case '10': 
-      //         rangeValue.style.left = '87%';
-      //         break;
-      //       default:
-      //         rangeValue.style.left = (+range.value + 1) * 8.1 + '%';
-      //     }
-      //   } else {
-      //     rangeValue.style.left = (+range.value + 1) * 8.1 + '%';
-      //   }
-      // }
       showColorRange();
       rangeValue.textContent = range.value;
     });
@@ -321,7 +292,6 @@ window.addEventListener('DOMContentLoaded', () => {
       }
 
       if (question[question.length - 2].classList.contains('show')) {
-        // reRenderQuestionHeader();
         if (checkingValueRanges()) { 
           //show question_connect
           question[question.length - 1].classList.add('show', 'fade');
@@ -333,9 +303,7 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     range.addEventListener('touchend', showNextElement);
-
     range.addEventListener('click', showNextElement);
-
   });
 
   function scrollNext(elem) {
@@ -394,7 +362,6 @@ window.addEventListener('DOMContentLoaded', () => {
     elem.style.cssText = 'height: auto;';
     elem.style.cssText = 'height:' + elem.scrollHeight + 'px';
   });
-
   
   function scrollToElem(elem) {
     let elemTop = elem.getBoundingClientRect().top,
@@ -408,7 +375,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   const answerExtended = document.querySelectorAll('.answer-extended');
 
-  function verifCheckedCheckbox() {
+  function verifyCheckedCheckbox() {
     answerExtended.forEach((item) => {
       if (item.classList.contains('show')) {
         const checkbox = item.querySelectorAll('.answer-checkbox');
@@ -423,12 +390,23 @@ window.addEventListener('DOMContentLoaded', () => {
         if (!checkedSome && !item.querySelector('.message')) {
           const message = document.createElement('div');
           message.classList.add('message');
-          message.textContent = `Выберите, пожалуста, причину предыдущей оценки`;
+          message.textContent = `Выберите, пожалуйста, причину предыдущей оценки`;
           item.append(message);
         }
       }
     });
   }
+
+  const postData = async (url, data) => {
+    const result = await fetch(url, {
+      method: "POST",
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: data
+    });
+    return await result.json();
+  };
 
   const form = document.getElementById('form'),
         header = document.querySelector('.header'),
@@ -436,17 +414,42 @@ window.addEventListener('DOMContentLoaded', () => {
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    verifCheckedCheckbox();
+    verifyCheckedCheckbox();
+
     const message = document.querySelectorAll('.message');
+    
     if (message[0]) {
       scrollToElem(message[0].parentElement.parentElement.parentElement);
     } else {
-      const formData = new FormData(form);
-      const jsonData = JSON.stringify(Object.fromEntries(formData.entries()));
+      const messageUpload = document.createElement('div');
       
-      header.classList.add('hide');
-      form.classList.add('hide');
-      afterSubmitBlock.classList.add('show', 'fade');
+      messageUpload.innerHTML = "<img src='img/spinner.svg' width='70' height='70'>";
+      messageUpload.style.cssText = `
+        display: block;
+        width: 100%;
+        text-align: center;
+        margin-bottom: -50px;
+        `;
+      blockSubmit.insertAdjacentElement('beforeend', messageUpload);
+      scrollNext(messageUpload);
+
+      const formData = new FormData(form),
+            jsonData = JSON.stringify(Object.fromEntries(formData.entries()));
+
+      postData('https://jsonplaceholder.typicode.com/posts', jsonData)
+        .then(data => {
+          console.log(data);
+          messageUpload.remove();
+          header.classList.add('hide');
+          form.classList.add('hide');
+          afterSubmitBlock.classList.add('show', 'fade');
+        })
+        .catch(() => {
+          messageUpload.innerHTML = "<p class='message'>Что-то пошло не так...</p>";
+          setTimeout(() => {
+            messageUpload.remove();
+          }, 2000);
+        })
     }
   });
 

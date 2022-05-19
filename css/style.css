@@ -71,7 +71,9 @@ ol[class] {
 }
 
 .header__logo {
-  margin: 18px 0px 0 12px;
+  margin: 18px 0px 0 19px;
+  width: 109px;
+  height: 18px;
 }
 
 .header__title {
@@ -579,8 +581,8 @@ label[for="comment"] {
 }
 
 .after-submit__logo {
-  width: 187px;
-  height: 24px;
+  width: 130px;
+  height: 20px;
   margin: 20px;
 }
 
